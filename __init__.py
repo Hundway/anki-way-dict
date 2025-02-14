@@ -22,14 +22,14 @@ def editor_action(browser: Browser, menu: QMenu = None) -> None:
 
     menu.addSeparator()
     menu.addAction(
-        "WayDict: Ads definitions", lambda: open_editor_for_selected_notes(browser)
+        "WayDict: Add definition", lambda: open_editor_for_selected_notes(browser)
     )
 
 
 def editor_button(buttons: list[str], editor: Editor) -> list[str]:
     new_button = editor.addButton(
         os.path.dirname(__file__) + "/graphics/icon.png",
-        "WayDict: Add definitions",
+        "WayDict: Add definition",
         EditorDialog,
         tip="Add definition",
     )

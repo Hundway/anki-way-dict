@@ -1,0 +1,46 @@
+import os
+import anki.hooks
+import aqt
+from aqt import mw
+from aqt.editor import Editor
+from aqt.browser import Browser
+from aqt.utils import tooltip
+from aqt.qt import QMenu
+from .editor import EditorDialog
+
+
+def editor_action(browser: Browser, menu: QMenu = None) -> None:
+    def open_editor_for_selected_notes(browser: Browser) -> None:
+        nids = browser.selectedNotes()
+        if nids:
+            EditorDialog(browser, nids)
+        else:
+            tooltip("No cards selected.")
+
+    if menu is None:
+        menu = mw.form.menuEdit
+
+    menu.addSeparator()
+    menu.addAction(
+        "WayDict: Ads definitions", lambda: open_editor_for_selected_notes(browser)
+    )
+
+
+def editor_button(buttons: list[str], editor: Editor) -> list[str]:
+    new_button = editor.addButton(
+        os.path.dirname(__file__) + "/graphics/icon.png",
+        "WayDict: Add definitions",
+        EditorDialog,
+        tip="Add definition",
+    )
+    buttons.append(new_button)
+
+
+# Register action in Anki > browse > editor
+anki.hooks.addHook("browser.setupMenus", editor_action)
+
+# Register button in Anki > browse > edit
+aqt.gui_hooks.editor_did_init_buttons.append(editor_button)
+
+# Register action in Anki > browse > editor
+aqt.gui_hooks.browser_will_show_context_menu.append(editor_action)

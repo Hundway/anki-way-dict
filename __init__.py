@@ -1,7 +1,6 @@
 import os
 import anki.hooks
 import aqt
-from aqt import mw
 from aqt.editor import Editor
 from aqt.browser import Browser
 from aqt.utils import tooltip
@@ -18,7 +17,7 @@ def editor_action(browser: Browser, menu: QMenu = None) -> None:
             tooltip("No cards selected.")
 
     if menu is None:
-        menu = mw.form.menuEdit
+        menu = browser.form.menuEdit
 
     menu.addSeparator()
     menu.addAction(

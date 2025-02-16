@@ -223,11 +223,14 @@ class Ui_Dialog(object):
                     font-size: {font_size}pt;
                     font-family: {font_style};
                     overflow-y: scroll;
+                    margin: 0;
+                    border: 0;
+                    padding: 0.7em;
                 }}
                 ol {{
                     margin: 0;
                     border: 0;
-                    padding: 0 0 0 0.5em;
+                    padding: 0 0 0 1em;
                 }}
                 ul {{
                     margin: 0;

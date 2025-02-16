@@ -9,7 +9,7 @@ from aqt.editor import Editor
 from aqt.operations import CollectionOp, QueryOp
 from aqt.operations.note import OpChangesWithCount
 from aqt.qt import QDialog, QFileDialog, QUrl, QComboBox
-from aqt.utils import tooltip, show_warning
+from aqt.utils import tooltip
 from bs4 import BeautifulSoup
 from typing import Union
 from ..dictionary import Dictionary
@@ -130,7 +130,7 @@ class EditorDialog(QDialog):
             self.form.dictionary_path.setText(path)
             self.import_dictionary(path)
         else:
-            show_warning("Select a valid dictionary file.")
+            tooltip("Select a valid dictionary file.", parent=self.parent_window)
 
     def on_search(self) -> None:
         def lookup_definition(word: str) -> str:
@@ -146,7 +146,7 @@ class EditorDialog(QDialog):
             if Dictionary.validate_file(self.config["dictionary_path"]):
                 self.import_dictionary(self.config["dictionary_path"])
             else:
-                show_warning("Select a valid dictionary file.")
+                tooltip("Select a valid dictionary file.", parent=self.parent_window)
                 return
 
         QueryOp(
@@ -178,7 +178,7 @@ class EditorDialog(QDialog):
             if Dictionary.validate_file(self.config["dictionary_path"]):
                 self.import_dictionary(self.config["dictionary_path"])
             else:
-                show_warning("Select a valid dictionary file.")
+                tooltip("Select a valid dictionary file.", parent=self.parent_window)
                 return
 
         CollectionOp(self.parent_window, op).success(on_success).run_in_background()

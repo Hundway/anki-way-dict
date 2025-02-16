@@ -42,7 +42,16 @@ Given a selection of notes, definitions will only be added on those that matches
 
 ## Installation
 
-The easiest way to install Waydict is through AnkiWeb.
+### AnkiWeb
+The easiest way to install Waydict is through [AnkiWeb](https://ankiweb.net/shared/info/377012597?cb=1739746670083) addon code: `377012597`.
+
+- 1. Open Anki > Tools > Add-ons > `Get Add-ons...`.
+- 2. Paste the code and hit `Ok`.
+
+### Manual installation
+- 1. Download the *Waydict.zip* file from the latest release. 
+- 2. Open Anki > Tools > Add-ons > `Install from file...`.
+- 3. Select and open the downloaded file.
 
 ## Contributing
 Contributions are welcome! Please feel free to:

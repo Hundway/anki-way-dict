@@ -56,4 +56,5 @@ The easiest way to install Waydict is through [AnkiWeb](https://ankiweb.net/shar
 ## Contributing
 Contributions are welcome! Please feel free to:
 - Report [issues](https://github.com/Hundway/anki-way-dict/issues).
+- Request a [feature](https://github.com/Hundway/anki-way-dict/issues).
 - Send [pull requests](https://github.com/Hundway/anki-way-dict/pulls).

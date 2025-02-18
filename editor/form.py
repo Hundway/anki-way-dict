@@ -294,10 +294,15 @@ class Ui_Dialog(object):
             r"QScrollBar::handle:pressed {[^\}]*background-color: ([^;]*);",
             style_sheet,
         )
+
+        scroll_color = scroll_color[0] if scroll_color else ""
+        scroll_color_hover = scroll_color_hover[0] if scroll_color_hover else ""
+        scroll_color_active = scroll_color_active[0] if scroll_color_active else ""
+
         return scroll_color, scroll_color_hover, scroll_color_active
 
     def webengine_background(self, style_sheet):
         background_color = re.findall(
             r"QTextEdit[^\{}]*{[^\}]*background: ([^;]*);", style_sheet
-        )[0]
-        return background_color
+        )
+        return background_color[0] if background_color else ""

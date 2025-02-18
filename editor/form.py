@@ -284,16 +284,16 @@ class Ui_Dialog(object):
 
     def webengine_scrollbar(self, style_sheet):
         scroll_color = re.findall(
-            r"QScrollBar::handle {[^\}]*background-color: (#[0-9a-z]{6});", style_sheet
-        )[0]
+            r"QScrollBar::handle {[^\}]*background-color: ([^;]*);", style_sheet
+        )
         scroll_color_hover = re.findall(
-            r"QScrollBar::handle:hover {[^\}]*background-color: (#[0-9a-z]{6});",
+            r"QScrollBar::handle:hover {[^\}]*background-color: ([^;]*);",
             style_sheet,
-        )[0]
+        )
         scroll_color_active = re.findall(
-            r"QScrollBar::handle:pressed {[^\}]*background-color: (#[0-9a-z]{6});",
+            r"QScrollBar::handle:pressed {[^\}]*background-color: ([^;]*);",
             style_sheet,
-        )[0]
+        )
         return scroll_color, scroll_color_hover, scroll_color_active
 
     def webengine_background(self, style_sheet):

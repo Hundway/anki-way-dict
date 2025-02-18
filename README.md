@@ -1,5 +1,5 @@
 # Waydict: dictionary importer
-Waydict is an open-source, free [anki](https://apps.ankiweb.net/) add-on that lets you import your favorite term dictionary and add its definitions to notes.
+Waydict is an open-source, free [anki](https://apps.ankiweb.net/) add-on that lets you import your favorite dictionary and add its definitions to notes.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/93597321-2f43-48c2-b495-aa19b01bf543" style="width: 25vw;">
@@ -8,19 +8,19 @@ Waydict is an open-source, free [anki](https://apps.ankiweb.net/) add-on that le
 ## Usage
 After installation, the add-on can be accessed in multiple ways.
 Selecting any option will open a dialog to process all notes currently selected. 
-First you should set a dictionary and a note configuration, after pressing `Start` notes will be updated.
-To access the dialog, choose one of the following options on browser menu:
+First, you should set a dictionary and a note configuration; after pressing `Start`, notes will be updated.
+To access the dialog, choose one of the following options on the browser menu:
 
 - `定` button inside note editor.
 - `Add definition` action in edit menu or right-click context menu.
 
 ### 1. Select a dictionary
 
-At top-right of the dialog there's a `Browse` button that will let you select a *zip* file containing the dictionary entries.
+At the top-right of the dialog, there's a `Browse` button that will let you select a *zip* file containing the dictionary entries.
 To check if a dictionary was properly imported, use the `Preview` tab to search a word definition.
 
 There are three text formats to choose from:
-- `HTML-Full`: keep all html.
+- `HTML-Full`: keep all HTML.
 - `HTML-Brief`: keep only list elements, discard styles. 
 - `Plain-Text`: format list elements to plain text.
 
@@ -33,25 +33,25 @@ There are three text formats to choose from:
 
 ### 2. Set note options
 
-Given a selection of notes, definitions will only be added on those that matches the given note configuration:
+Given a selection of notes, definitions will only be added on those that match the given note configuration:
 
 - `Note type`: note type of the target.
 - `Source field`: field that contains the word to be searched.
 - `Destination field`: field in which definitions will be added.
-- `Overwrite destination`: overwrite destination even if has content.
+- `Overwrite destination`: overwrite destination even if it has content.
 
 ## Installation
 
 ### AnkiWeb
-The easiest way to install Waydict is through [AnkiWeb](https://ankiweb.net/shared/info/377012597?cb=1739746670083) addon code: `377012597`.
+The easiest way to install Waydict is through [AnkiWeb](https://ankiweb.net/shared/info/377012597?cb=1739746670083) add-on code: `377012597`.
 
-- 1. Open Anki > Tools > Add-ons > `Get Add-ons...`.
-- 2. Paste the code and hit `Ok`.
+1. Open Anki > Tools > Add-ons > `Get Add-ons`.
+2. Paste the code and hit `Ok`.
 
 ### Manual installation
-- 1. Download the *Waydict.zip* file from the latest release. 
-- 2. Open Anki > Tools > Add-ons > `Install from file...`.
-- 3. Select and open the downloaded file.
+1. Download the *Waydict.zip* file from the latest release. 
+2. Open Anki > Tools > Add-ons > `Install from file`.
+3. Select and open the downloaded file.
 
 ## Contributing
 Contributions are welcome! Please feel free to:

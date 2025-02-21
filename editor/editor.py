@@ -120,7 +120,9 @@ class EditorDialog(QDialog):
         self.on_search()
 
     def on_browse(self) -> None:
-        path = QFileDialog.getOpenFileName(self, "Open the dictionary", "", "(*.zip)")[0]
+        path = QFileDialog.getOpenFileName(
+            self, "Open the dictionary", "", "ZIP Files (*.zip)"
+        )[0]
 
         if not path:
             return

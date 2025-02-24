@@ -1,5 +1,3 @@
-import re
-from aqt import mw
 from aqt.qt import (
     QLocale,
     Qt,
@@ -20,6 +18,9 @@ from aqt.qt import (
     QFrame,
     QFont,
 )
+
+from aqt.theme import colors
+from aqt.theme import theme_manager as tm
 
 
 class Ui_Dialog(object):
@@ -115,7 +116,6 @@ class Ui_Dialog(object):
         self.definition_preview = QWebEngineView(parent=self.tab_1)
         self.definition_preview.setGeometry(QRect(-1, -1, 281, 161))
         self.definition_preview.setAutoFillBackground(True)
-        self.definition_preview.setStyleSheet("QTextEdit {\n    background: red;\n}")
         self.definition_preview.setObjectName("definition_preview")
         self.tabWidget.addTab(self.tab_1, "")
         self.tab_2 = QWidget()
@@ -217,17 +217,14 @@ class Ui_Dialog(object):
         self.setupWebEngineStyle()
 
     def setupWebEngineStyle(self):
-        style_sheet = mw.app.styleSheet()
         font_size, font_style, font_color = self.webengine_font()
-        background_color = self.webengine_background(style_sheet)
-        scroll, scroll_hover, scroll_active = self.webengine_scrollbar(style_sheet)
 
         self.definition_preview.html = f"""
         <html>
             <head>
             <style>
                 body {{
-                    background-color: {background_color};
+                    background-color: {tm.var(colors.CANVAS)};
                     color: {font_color};
                     font-size: {font_size}pt;
                     font-family: {font_style};
@@ -258,19 +255,18 @@ class Ui_Dialog(object):
                     border-style: solid;
                     border-width: 2vmin;
                     border-radius: 15px;
-                    background-color: {scroll};
+                    background-color: {tm.var(colors.SCROLLBAR_BG)};
                     background-clip: padding-box;
                 }}
                 ::-webkit-scrollbar-thumb:hover {{
-                    background-color: {scroll_hover};
+                    background-color: {tm.var(colors.SCROLLBAR_BG_HOVER)};
                 }}
                 ::-webkit-scrollbar-thumb:active {{
-                    background-color: {scroll_active};
+                    background-color: {tm.var(colors.SCROLLBAR_BG_ACTIVE)};
                 }}
             </style>
             </head>
-            <body>
-            </body>
+            <body></body>
         </html>
         """
         self.definition_preview.setHtml(self.definition_preview.html, QUrl("file://"))
@@ -278,31 +274,10 @@ class Ui_Dialog(object):
     def webengine_font(self):
         pallete = self.definition_source.palette()
         foreground = self.definition_source.foregroundRole()
+
         font = self.definition_source.font()
+        font_size = font.pointSize()
+        font_style = font.family()
         font_color = pallete.color(foreground).name()
-        return font.pointSize(), font.family(), font_color
 
-    def webengine_scrollbar(self, style_sheet):
-        scroll_color = re.findall(
-            r"QScrollBar::handle {[^\}]*background-color: ([^;]*);", style_sheet
-        )
-        scroll_color_hover = re.findall(
-            r"QScrollBar::handle:hover {[^\}]*background-color: ([^;]*);",
-            style_sheet,
-        )
-        scroll_color_active = re.findall(
-            r"QScrollBar::handle:pressed {[^\}]*background-color: ([^;]*);",
-            style_sheet,
-        )
-
-        scroll_color = scroll_color[0] if scroll_color else ""
-        scroll_color_hover = scroll_color_hover[0] if scroll_color_hover else ""
-        scroll_color_active = scroll_color_active[0] if scroll_color_active else ""
-
-        return scroll_color, scroll_color_hover, scroll_color_active
-
-    def webengine_background(self, style_sheet):
-        background_color = re.findall(
-            r"QTextEdit[^\{}]*{[^\}]*background: ([^;]*);", style_sheet
-        )
-        return background_color[0] if background_color else ""
+        return font_size, font_style, font_color

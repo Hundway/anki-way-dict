@@ -1,9 +1,15 @@
 # Waydict: dictionary importer
+
+![Release](https://img.shields.io/github/v/release/Hundway/anki-way-dict?include_prereleases)
+![Latest Commit](https://img.shields.io/github/last-commit/Hundway/anki-way-dict)
+[![Rate on AnkiWeb](https://glutanimate.com/logos/ankiweb-rate.svg)](https://ankiweb.net/shared/info/377012597)
+![GitHub](https://img.shields.io/github/license/Hundway/anki-way-dict)
+
 Waydict is an open-source, free [anki](https://apps.ankiweb.net/) add-on that lets you import your favorite dictionary and add its definitions to notes.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/93597321-2f43-48c2-b495-aa19b01bf543" style="width: 25vw;">
-</p>
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/93597321-2f43-48c2-b495-aa19b01bf543" style="width: 50%;">
+</div>
 
 ## Usage
 After installation, the add-on can be accessed in multiple ways.
@@ -25,7 +31,7 @@ There are three text formats to choose from:
 - `Plain-Text`: format list elements to plain text.
 
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/90150669-771e-49d2-ad62-02078670923d" style="width: 23vw"></img>
+    <img src="https://github.com/user-attachments/assets/90150669-771e-49d2-ad62-02078670923d" style="width: 60%;">
 </p>
 
 > Only dictionaries on [yomitan](https://github.com/yomidevs/yomitan) format are currently supported.
@@ -49,7 +55,7 @@ The easiest way to install Waydict is through [AnkiWeb](https://ankiweb.net/shar
 2. Paste the code and hit `Ok`.
 
 ### Manual installation
-1. Download the *Waydict.zip* file from the latest release. 
+1. Download *waydict.zip* file from the [latest release](https://github.com/Hundway/anki-way-dict/releases). 
 2. Open Anki > Tools > Add-ons > `Install from file`.
 3. Select and open the downloaded file.
 

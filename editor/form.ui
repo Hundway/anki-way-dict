@@ -16,9 +16,6 @@
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
   <widget class="QPushButton" name="start">
    <property name="geometry">
     <rect>
@@ -107,6 +104,9 @@
      <weight>75</weight>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-color: red;</string>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -231,7 +231,7 @@
        <x>-1</x>
        <y>-1</y>
        <width>281</width>
-       <height>161</height>
+       <height>151</height>
       </rect>
      </property>
      <property name="autoFillBackground">
@@ -254,7 +254,7 @@
        <x>0</x>
        <y>0</y>
        <width>281</width>
-       <height>161</height>
+       <height>151</height>
       </rect>
      </property>
      <property name="styleSheet">

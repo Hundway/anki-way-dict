@@ -18,9 +18,91 @@ from aqt.qt import (
     QFrame,
     QFont,
 )
-
+from aqt import mw
 from aqt.theme import colors
 from aqt.theme import theme_manager as tm
+
+
+class DefinitionWebView(QWebEngineView):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.style = self._get_style()
+        self.update_html("")
+
+    def update_html(self, body):
+        if not body:
+            placeholder = """
+                The definition of the word should appear here
+                after pressing the "search" button.
+            """
+            body = f'<span class="placeholder">{placeholder}</span>'
+
+        self.setHtml(
+            f"<html><head>{self.style}</head>{body}</html>",
+            QUrl(f"{mw.serverURL()}_anki/waydict?id={id(self)}"),
+        )
+
+    def _get_style(self):
+        font_size, font_style, font_color = self._get_font_style()
+        return f"""
+            <style>
+                body {{
+                    background-color: {tm.var(colors.CANVAS)};
+                    color: {font_color};
+                    font-size: {font_size}pt;
+                    font-family: {font_style};
+                    overflow-y: scroll;
+                    margin: 0;
+                    border: 0;
+                    padding: 0.7em;
+                }}
+                ol {{
+                    margin: 0;
+                    border: 0;
+                    padding: 0 0 0 1em;
+                }}
+                ul {{
+                    margin: 0;
+                    border: 0;
+                    padding: 0 0 0 3em;
+                }}
+                .placeholder {{
+                    color: {tm.var(colors.FG_SUBTLE)};
+                }}
+                ::-webkit-scrollbar {{
+                    width: 12vmin;
+                    background-color: transparent;
+                }}
+                ::webkit-scrollbar-track {{
+                    background-color: transparent;
+                }}
+                ::-webkit-scrollbar-thumb {{
+                    border-color: transparent;
+                    border-style: solid;
+                    border-width: 2vmin;
+                    border-radius: 15px;
+                    background-color: {tm.var(colors.SCROLLBAR_BG)};
+                    background-clip: padding-box;
+                }}
+                ::-webkit-scrollbar-thumb:hover {{
+                    background-color: {tm.var(colors.SCROLLBAR_BG_HOVER)};
+                }}
+                ::-webkit-scrollbar-thumb:active {{
+                    background-color: {tm.var(colors.SCROLLBAR_BG_ACTIVE)};
+                }}
+            </style>
+        """
+
+    def _get_font_style(self):
+        pallete = QTextEdit().palette()
+        foreground = QTextEdit().foregroundRole()
+
+        font = QTextEdit().font()
+        font_size = font.pointSize()
+        font_style = font.family()
+        font_color = pallete.color(foreground).name()
+
+        return font_size, font_style, font_color
 
 
 class Ui_Dialog(object):
@@ -113,9 +195,10 @@ class Ui_Dialog(object):
         self.tabWidget.setObjectName("tabWidget")
         self.tab_1 = QWidget()
         self.tab_1.setObjectName("tab_1")
-        self.definition_preview = QWebEngineView(parent=self.tab_1)
+        self.definition_preview = DefinitionWebView(parent=self.tab_1)
         self.definition_preview.setGeometry(QRect(-1, -1, 281, 161))
         self.definition_preview.setAutoFillBackground(True)
+        self.definition_preview.setStyleSheet("QTextEdit {\n    background: red;\n}")
         self.definition_preview.setObjectName("definition_preview")
         self.tabWidget.addTab(self.tab_1, "")
         self.tab_2 = QWidget()
@@ -214,70 +297,3 @@ class Ui_Dialog(object):
         self.label_7.setText(_translate("Dialog", "Text format"))
         self.label.setText(_translate("Dialog", "Dictionary options"))
         self.word.setPlaceholderText(_translate("Dialog", "Enter a word"))
-        self.setupWebEngineStyle()
-
-    def setupWebEngineStyle(self):
-        font_size, font_style, font_color = self.webengine_font()
-
-        self.definition_preview.html = f"""
-        <html>
-            <head>
-            <style>
-                body {{
-                    background-color: {tm.var(colors.CANVAS)};
-                    color: {font_color};
-                    font-size: {font_size}pt;
-                    font-family: {font_style};
-                    overflow-y: scroll;
-                    margin: 0;
-                    border: 0;
-                    padding: 0.7em;
-                }}
-                ol {{
-                    margin: 0;
-                    border: 0;
-                    padding: 0 0 0 1em;
-                }}
-                ul {{
-                    margin: 0;
-                    border: 0;
-                    padding: 0 0 0 3em;
-                }}
-                ::-webkit-scrollbar {{
-                    width: 12vmin;
-                    background-color: transparent;
-                }}
-                ::webkit-scrollbar-track {{
-                    background-color: transparent;
-                }}
-                ::-webkit-scrollbar-thumb {{
-                    border-color: transparent;
-                    border-style: solid;
-                    border-width: 2vmin;
-                    border-radius: 15px;
-                    background-color: {tm.var(colors.SCROLLBAR_BG)};
-                    background-clip: padding-box;
-                }}
-                ::-webkit-scrollbar-thumb:hover {{
-                    background-color: {tm.var(colors.SCROLLBAR_BG_HOVER)};
-                }}
-                ::-webkit-scrollbar-thumb:active {{
-                    background-color: {tm.var(colors.SCROLLBAR_BG_ACTIVE)};
-                }}
-            </style>
-            </head>
-            <body></body>
-        </html>
-        """
-        self.definition_preview.setHtml(self.definition_preview.html, QUrl("file://"))
-
-    def webengine_font(self):
-        pallete = self.definition_source.palette()
-        foreground = self.definition_source.foregroundRole()
-
-        font = self.definition_source.font()
-        font_size = font.pointSize()
-        font_style = font.family()
-        font_color = pallete.color(foreground).name()
-
-        return font_size, font_style, font_color

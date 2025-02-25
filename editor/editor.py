@@ -1,4 +1,3 @@
-import re
 import aqt
 import aqt.qt
 from anki.notes import Note
@@ -8,7 +7,7 @@ from aqt.browser import Browser
 from aqt.editor import Editor
 from aqt.operations import CollectionOp, QueryOp
 from aqt.operations.note import OpChangesWithCount
-from aqt.qt import QDialog, QFileDialog, QUrl, QComboBox
+from aqt.qt import QDialog, QFileDialog, QComboBox
 from aqt.utils import tooltip
 from bs4 import BeautifulSoup
 from typing import Union
@@ -93,12 +92,7 @@ class EditorDialog(QDialog):
         self.update_definition_source(definition)
 
     def update_definition_preview(self, text: str) -> None:
-        if not text:
-            text = 'The definition of the word should appear here after pressing the "search" button.'
-
-        html = self.form.definition_preview.html
-        html = re.sub(r"(?<=<body>)(.|\s)*(?=<\/body>)", text, html)
-        self.form.definition_preview.setHtml(html, QUrl(""))
+        self.form.definition_preview.update_html(text)
 
     def update_definition_source(self, text: str) -> None:
         if "HTML" in self.config["text_format"]:

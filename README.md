@@ -34,8 +34,9 @@ There are three text formats to choose from:
     <img src="https://github.com/user-attachments/assets/90150669-771e-49d2-ad62-02078670923d" style="width: 60%;">
 </p>
 
+> [!WARNING]
 > Only dictionaries on [yomitan](https://github.com/yomidevs/yomitan) format are currently supported.
-> To access a handful of those, please refer to [yomitan wiki](https://yomitan.wiki/dictionaries/).
+> To access a handful of those, please refer to yomitan [wiki](https://yomitan.wiki/dictionaries/).
 
 ### 2. Set note options
 

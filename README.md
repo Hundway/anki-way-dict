@@ -42,8 +42,8 @@ There are three text formats to choose from:
 
 Given a selection of notes, definitions will only be added on those that match the given note configuration:
 
-- `Note type`: note type of the target.
-- `Source field`: field that contains the word to be searched.
+- `Note type`: target note type.
+- `Source field`: field with the word to be searched.
 - `Destination field`: field in which definitions will be added.
 - `Overwrite destination`: overwrite destination even if it has content.
 

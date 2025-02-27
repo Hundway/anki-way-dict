@@ -157,13 +157,13 @@ class Ui_Dialog(object):
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
         self.label_2.setObjectName("label_2")
-        self.overwrite_field = QCheckBox(parent=Dialog)
-        self.overwrite_field.setGeometry(QRect(160, 410, 81, 21))
-        self.overwrite_field.setLocale(
+        self.overwrite_destination = QCheckBox(parent=Dialog)
+        self.overwrite_destination.setGeometry(QRect(160, 410, 81, 21))
+        self.overwrite_destination.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
-        self.overwrite_field.setText("")
-        self.overwrite_field.setObjectName("overwrite_field")
+        self.overwrite_destination.setText("")
+        self.overwrite_destination.setObjectName("overwrite_destination")
         self.label_6 = QLabel(parent=Dialog)
         self.label_6.setGeometry(QRect(20, 280, 191, 31))
         font = QFont()

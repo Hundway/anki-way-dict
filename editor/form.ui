@@ -128,7 +128,7 @@
     <string>Note type</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="overwrite_field">
+  <widget class="QCheckBox" name="overwrite_destination">
    <property name="geometry">
     <rect>
      <x>160</x>

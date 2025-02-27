@@ -50,9 +50,8 @@ class EditorDialog(QDialog):
         self.update_field_items()
         self.update_combo(self.form.source_field, self.config["source_field"])
         self.update_combo(self.form.destination_field, self.config["destination_field"])
-        self.form.overwrite_field.setChecked(self.config["overwrite_destination"])
+        self.form.overwrite_destination.setChecked(self.config["overwrite_destination"])
 
-        self.form.note_type.currentIndexChanged.connect(self.update_field_items)
         self.form.text_format.currentIndexChanged.connect(self.on_text_format_change)
         self.form.browse.clicked.connect(self.on_browse)
         self.form.search.clicked.connect(self.on_search)

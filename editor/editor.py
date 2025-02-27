@@ -73,7 +73,7 @@ class EditorDialog(QDialog):
 
     def update_dict_path(self, path: str) -> None:
         if Dictionary.validate_file(path):
-            self.form.dictionary_path.setText(path)
+            self.form.dictionary_title.setText(Dictionary.fetch_title(path))
 
     def update_combo(self, combo: QComboBox, value: str) -> None:
         if value not in [combo.itemText(i) for i in range(combo.count())]:
@@ -133,7 +133,7 @@ class EditorDialog(QDialog):
 
         if Dictionary.validate_file(path):
             self.config["dictionary_path"] = path
-            self.form.dictionary_path.setText(path)
+            self.form.dictionary_title.setText(Dictionary.fetch_title(path))
             self.import_dictionary(path)
         else:
             tooltip("Select a valid dictionary file.", parent=self.parent_window)

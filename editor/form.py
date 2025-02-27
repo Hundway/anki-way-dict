@@ -209,15 +209,16 @@ class Ui_Dialog(object):
         self.definition_source.setReadOnly(True)
         self.definition_source.setObjectName("definition_source")
         self.tabWidget.addTab(self.tab_2, "")
-        self.dictionary_path = QLineEdit(parent=Dialog)
-        self.dictionary_path.setGeometry(QRect(20, 50, 281, 21))
-        self.dictionary_path.setAcceptDrops(True)
-        self.dictionary_path.setLocale(
+        self.dictionary_title = QLineEdit(parent=Dialog)
+        self.dictionary_title.setGeometry(QRect(20, 50, 281, 21))
+        self.dictionary_title.setAcceptDrops(True)
+        self.dictionary_title.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
-        self.dictionary_path.setText("")
-        self.dictionary_path.setReadOnly(True)
-        self.dictionary_path.setObjectName("dictionary_path")
+        self.dictionary_title.setText("")
+        self.dictionary_title.setReadOnly(True)
+        self.dictionary_title.setObjectName("dictionary_path")
+        self.dictionary_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.text_format = QComboBox(parent=Dialog)
         self.text_format.setGeometry(QRect(320, 250, 121, 21))
         self.text_format.setLocale(
@@ -290,7 +291,7 @@ class Ui_Dialog(object):
         self.tabWidget.setTabText(
             self.tabWidget.indexOf(self.tab_2), _translate("Dialog", "Source")
         )
-        self.dictionary_path.setPlaceholderText(
+        self.dictionary_title.setPlaceholderText(
             _translate("Dialog", "Select your dictionary")
         )
         self.browse.setText(_translate("Dialog", "Browse"))

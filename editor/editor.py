@@ -7,7 +7,7 @@ from aqt.browser import Browser
 from aqt.editor import Editor
 from aqt.operations import CollectionOp, QueryOp
 from aqt.operations.note import OpChangesWithCount
-from aqt.qt import QDialog, QFileDialog, QComboBox
+from aqt.qt import QDialog, QFileDialog, QComboBox, QRadioButton
 from aqt.utils import tooltip
 from bs4 import BeautifulSoup
 from typing import Union
@@ -57,14 +57,19 @@ class EditorDialog(QDialog):
         self.form.search.clicked.connect(self.on_search)
         self.form.start.clicked.connect(self.on_start)
 
-    def update_config(self) -> dict:
-        self.config["dictionary_path"] = self.form.dictionary_path.text()
-        self.config["note_type"] = self.form.note_type.currentText()
-        self.config["source_field"] = self.form.source_field.currentText()
-        self.config["destination_field"] = self.form.destination_field.currentText()
-        self.config["overwrite_destination"] = self.form.overwrite_field.isChecked()
-        self.config["text_format"] = self.form.text_format.currentText()
-        return self.config
+        self.form.note_type.currentIndexChanged.connect(self.update_field_items)
+        self.form.note_type.currentIndexChanged.connect(
+            lambda: self.on_combo_change(self.form.note_type)
+        )
+        self.form.source_field.currentIndexChanged.connect(
+            lambda: self.on_combo_change(self.form.source_field)
+        )
+        self.form.destination_field.currentIndexChanged.connect(
+            lambda: self.on_combo_change(self.form.destination_field)
+        )
+        self.form.overwrite_destination.stateChanged.connect(
+            lambda: self.on_radio_change(self.form.overwrite_destination)
+        )
 
     def update_dict_path(self, path: str) -> None:
         if Dictionary.validate_file(path):
@@ -111,6 +116,12 @@ class EditorDialog(QDialog):
     def on_text_format_change(self) -> None:
         self.config["text_format"] = self.form.text_format.currentText()
         self.on_search()
+
+    def on_combo_change(self, combo: QComboBox) -> None:
+        self.config[combo.objectName()] = combo.currentText()
+
+    def on_radio_change(self, radio: QRadioButton) -> None:
+        self.config[radio.objectName()] = radio.isChecked()
 
     def on_browse(self) -> None:
         path = QFileDialog.getOpenFileName(
@@ -180,7 +191,6 @@ class EditorDialog(QDialog):
         self.close()
 
     def save_config(self) -> None:
-        self.config = self.update_config()
         mw.addonManager.writeConfig(__name__, self.config)
 
 

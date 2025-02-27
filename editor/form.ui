@@ -25,6 +25,9 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
    </property>
@@ -47,6 +50,9 @@
    <property name="text">
     <string>Source field</string>
    </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
@@ -63,6 +69,9 @@
    <property name="text">
     <string>Destination field</string>
    </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
   </widget>
   <widget class="QComboBox" name="destination_field">
    <property name="geometry">
@@ -72,6 +81,9 @@
      <width>281</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
@@ -85,6 +97,9 @@
      <width>281</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
@@ -127,6 +142,9 @@
    <property name="text">
     <string>Note type</string>
    </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
   </widget>
   <widget class="QCheckBox" name="overwrite_destination">
    <property name="geometry">
@@ -136,6 +154,9 @@
      <width>81</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
@@ -163,6 +184,9 @@
    <property name="text">
     <string>Note options</string>
    </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
   </widget>
   <widget class="QComboBox" name="source_field">
    <property name="geometry">
@@ -172,6 +196,9 @@
      <width>281</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
@@ -192,6 +219,9 @@
    <property name="text">
     <string>Overwrite destination</string>
    </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
   </widget>
   <widget class="QPushButton" name="search">
    <property name="geometry">
@@ -201,6 +231,9 @@
      <width>121</width>
      <height>23</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
@@ -217,6 +250,9 @@
      <width>281</width>
      <height>181</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="currentIndex">
     <number>1</number>
@@ -276,7 +312,7 @@ p, li { white-space: pre-wrap; }
     </widget>
    </widget>
   </widget>
-  <widget class="QLineEdit" name="dictionary_path">
+  <widget class="QLineEdit" name="dictionary_title">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -284,6 +320,9 @@ p, li { white-space: pre-wrap; }
      <width>281</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
    <property name="acceptDrops">
     <bool>true</bool>
@@ -313,6 +352,9 @@ p, li { white-space: pre-wrap; }
      <height>21</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
    </property>
@@ -339,6 +381,9 @@ p, li { white-space: pre-wrap; }
      <height>23</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
    </property>
@@ -364,6 +409,9 @@ p, li { white-space: pre-wrap; }
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -383,6 +431,9 @@ p, li { white-space: pre-wrap; }
    </property>
    <property name="text">
     <string>Dictionary options</string>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="word">

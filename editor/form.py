@@ -106,22 +106,25 @@ class DefinitionWebView(QWebEngineView):
 
 
 class Ui_Dialog(object):
-    def setupUi(self, Dialog):
+    def setupUi(self, Dialog: QWidget):
         Dialog.setObjectName("Dialog")
-        Dialog.setFixedSize(461, 481)
+        Dialog.resize(461, 481)
         Dialog.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
-        Dialog.setStyleSheet("")
         self.start = QPushButton(parent=Dialog)
         self.start.setGeometry(QRect(10, 450, 441, 23))
+        self.start.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.start.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
         self.start.setObjectName("start")
-        self.start.clearFocus()
         self.label_3 = QLabel(parent=Dialog)
         self.label_3.setGeometry(QRect(20, 350, 131, 21))
         self.label_3.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
+        )
+        self.label_3.setTextInteractionFlags(
+            Qt.TextInteractionFlag.LinksAccessibleByMouse
+            | Qt.TextInteractionFlag.TextSelectableByMouse
         )
         self.label_3.setObjectName("label_3")
         self.label_4 = QLabel(parent=Dialog)
@@ -129,15 +132,21 @@ class Ui_Dialog(object):
         self.label_4.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
+        self.label_4.setTextInteractionFlags(
+            Qt.TextInteractionFlag.LinksAccessibleByMouse
+            | Qt.TextInteractionFlag.TextSelectableByMouse
+        )
         self.label_4.setObjectName("label_4")
         self.destination_field = QComboBox(parent=Dialog)
         self.destination_field.setGeometry(QRect(160, 380, 281, 22))
+        self.destination_field.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.destination_field.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
         self.destination_field.setObjectName("destination_field")
         self.note_type = QComboBox(parent=Dialog)
         self.note_type.setGeometry(QRect(160, 320, 281, 22))
+        self.note_type.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.note_type.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
@@ -148,6 +157,7 @@ class Ui_Dialog(object):
         font.setBold(True)
         font.setWeight(75)
         self.line_2.setFont(font)
+        self.line_2.setStyleSheet("border-color: red;")
         self.line_2.setFrameShape(QFrame.Shape.HLine)
         self.line_2.setFrameShadow(QFrame.Shadow.Sunken)
         self.line_2.setObjectName("line_2")
@@ -156,9 +166,14 @@ class Ui_Dialog(object):
         self.label_2.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
+        self.label_2.setTextInteractionFlags(
+            Qt.TextInteractionFlag.LinksAccessibleByMouse
+            | Qt.TextInteractionFlag.TextSelectableByMouse
+        )
         self.label_2.setObjectName("label_2")
         self.overwrite_destination = QCheckBox(parent=Dialog)
         self.overwrite_destination.setGeometry(QRect(160, 410, 81, 21))
+        self.overwrite_destination.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.overwrite_destination.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
@@ -171,9 +186,14 @@ class Ui_Dialog(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_6.setFont(font)
+        self.label_6.setTextInteractionFlags(
+            Qt.TextInteractionFlag.LinksAccessibleByMouse
+            | Qt.TextInteractionFlag.TextSelectableByMouse
+        )
         self.label_6.setObjectName("label_6")
         self.source_field = QComboBox(parent=Dialog)
         self.source_field.setGeometry(QRect(160, 350, 281, 22))
+        self.source_field.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.source_field.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
@@ -183,15 +203,21 @@ class Ui_Dialog(object):
         self.label_5.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
+        self.label_5.setTextInteractionFlags(
+            Qt.TextInteractionFlag.LinksAccessibleByMouse
+            | Qt.TextInteractionFlag.TextSelectableByMouse
+        )
         self.label_5.setObjectName("label_5")
         self.search = QPushButton(parent=Dialog)
         self.search.setGeometry(QRect(320, 130, 121, 23))
+        self.search.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.search.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
         self.search.setObjectName("search")
         self.tabWidget = QTabWidget(parent=Dialog)
         self.tabWidget.setGeometry(QRect(20, 90, 281, 181))
+        self.tabWidget.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.tabWidget.setObjectName("tabWidget")
         self.tab_1 = QWidget()
         self.tab_1.setObjectName("tab_1")
@@ -211,16 +237,18 @@ class Ui_Dialog(object):
         self.tabWidget.addTab(self.tab_2, "")
         self.dictionary_title = QLineEdit(parent=Dialog)
         self.dictionary_title.setGeometry(QRect(20, 50, 281, 21))
+        self.dictionary_title.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.dictionary_title.setAcceptDrops(True)
         self.dictionary_title.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
         self.dictionary_title.setText("")
-        self.dictionary_title.setReadOnly(True)
-        self.dictionary_title.setObjectName("dictionary_path")
         self.dictionary_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.dictionary_title.setReadOnly(True)
+        self.dictionary_title.setObjectName("dictionary_title")
         self.text_format = QComboBox(parent=Dialog)
         self.text_format.setGeometry(QRect(320, 250, 121, 21))
+        self.text_format.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.text_format.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
@@ -232,6 +260,7 @@ class Ui_Dialog(object):
         self.line.setObjectName("line")
         self.browse = QPushButton(parent=Dialog)
         self.browse.setGeometry(QRect(320, 50, 121, 23))
+        self.browse.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.browse.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
@@ -242,6 +271,10 @@ class Ui_Dialog(object):
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
         self.label_7.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_7.setTextInteractionFlags(
+            Qt.TextInteractionFlag.LinksAccessibleByMouse
+            | Qt.TextInteractionFlag.TextSelectableByMouse
+        )
         self.label_7.setObjectName("label_7")
         self.label = QLabel(parent=Dialog)
         self.label.setGeometry(QRect(20, 10, 191, 31))
@@ -250,6 +283,10 @@ class Ui_Dialog(object):
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
+        self.label.setTextInteractionFlags(
+            Qt.TextInteractionFlag.LinksAccessibleByMouse
+            | Qt.TextInteractionFlag.TextSelectableByMouse
+        )
         self.label.setObjectName("label")
         self.word = QLineEdit(parent=Dialog)
         self.word.setGeometry(QRect(320, 100, 121, 21))
@@ -266,7 +303,7 @@ class Ui_Dialog(object):
             QWebEngineSettings.WebAttribute.JavascriptEnabled, False
         )
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):

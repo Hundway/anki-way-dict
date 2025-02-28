@@ -8,7 +8,7 @@
 Waydict is an open-source, free [anki](https://apps.ankiweb.net/) add-on that lets you import your favorite dictionary and add its definitions to notes.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/93597321-2f43-48c2-b495-aa19b01bf543" style="width: 50%;">
+  <img src="https://github.com/user-attachments/assets/55e6d836-09e3-42fa-8cea-ac2ac48ed8f0" style="width: 45%;">
 </div>
 
 ## Usage
@@ -19,6 +19,10 @@ To access the dialog, choose one of the following options on the browser menu:
 
 - `定` button inside note editor.
 - `Add definition` action in edit menu or right-click context menu.
+
+| Note editor | Edit Menu | Context Menu |
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="https://github.com/user-attachments/assets/f618f907-357e-4fd9-a267-2d1a2aaff84c" style="width: 280px; height: 350px"> | <img src="https://github.com/user-attachments/assets/38644558-bd0a-4040-a29e-191ba0c1dcec" style="width: 350px; height: 350px;"> | <img src="https://github.com/user-attachments/assets/6b631119-e820-4ad9-baea-8b825e1a6064" style="width: 350px; height: 350px;">
 
 ### 1. Select a dictionary
 

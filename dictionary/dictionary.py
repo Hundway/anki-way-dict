@@ -14,7 +14,7 @@ class Dictionary:
         self.dictionary = self._import_dictionary(path)
 
     def find_definition(self, word: str, text_format: str = "HTML-Full") -> str:
-        """Fetch all definitions for a given word."""
+        """Fetch definitions for a given word."""
         if not word:
             return ""
 
@@ -40,7 +40,7 @@ class Dictionary:
 
     @staticmethod
     def fetch_version(path: str) -> str:
-        """Get the title of the dictionary from the given `path`."""
+        """Get the version of the dictionary entries in the given `path`."""
         with ZipFile(path, "r") as zip_file:
             with zip_file.open("index.json") as index:
                 version = orjson.loads(index.read())["format"]
@@ -48,6 +48,8 @@ class Dictionary:
 
     @staticmethod
     def validate_file(path: str) -> bool:
+        """Verify if `path` has a valid dictionary file.
+        It must be a zip with an index and term bank json files."""
         if not os.path.isfile(path):
             return False
         if not path.endswith(".zip"):
@@ -68,7 +70,7 @@ class Dictionary:
         return self._build_database(dictionary)
 
     def _build_database(self, dictionary: list[list]) -> dict[str:list]:
-        """Build a database from the given `dictionary`."""
+        """Build a database of entries from the given `dictionary` list."""
         database = defaultdict(list)
         for entry in dictionary:
             database[entry[0]].append(entry)

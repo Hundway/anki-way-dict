@@ -18,7 +18,7 @@ class Dictionary:
         if not word:
             return ""
 
-        entries = self.dictionary[word]
+        entries = self.dictionary[word.lower()]
 
         if not entries:
             return ""
@@ -73,8 +73,8 @@ class Dictionary:
         """Build a database of entries from the given `dictionary` list."""
         database = defaultdict(list)
         for entry in dictionary:
-            database[entry[0]].append(entry)
-            database[entry[1]].append(entry)
+            database[entry[0].lower()].append(entry)
+            database[entry[1].lower()].append(entry)
         return database
 
     def _list_term_banks(self, zip_file: ZipFile) -> list[str]:

@@ -39,10 +39,43 @@ def parse_dict(structure: dict) -> str:
     content = parse_content(structure.get("content", ""))
 
     if not tag:
+        if structure.get("type") == "image":
+            return parse_struct_image(structure)
         return content
+
+    if tag == "img":
+        return parse_image(structure)
 
     attributes = parse_attributes(structure)
     return f"<{tag}{attributes}>{content}</{tag}>"
+
+
+def parse_image(structure: dict) -> str:
+    """Parse an img element and return it with the correct attributes."""
+    src = structure.get("src", "")
+
+    if not src:
+        src = structure.get("path", "")
+
+    size_units = structure.get("sizeUnits", "")
+
+    if size_units:
+        height = str(structure.get("height", "")) + size_units
+        width = str(structure.get("width", "")) + size_units
+        return f'<img src="{src}" style="height: {height}; width: {width};">'
+
+    return f'<img src="{src}">'
+
+
+def parse_struct_image(structure: dict) -> str:
+    """Parse a structured image and return it as a string.
+    If the image has a description, it will be included in a figure element."""
+    img = f'<img src="{structure.get("path")}">'
+    description = structure.get("description", "")
+
+    if description:
+        return f"<figure>{img}<figcaption>{description}</figcaption></figure>"
+    return img
 
 
 def parse_attributes(structure: dict) -> str:

@@ -11,6 +11,7 @@ from aqt.qt import QDialog, QFileDialog, QComboBox, QRadioButton
 from aqt.utils import tooltip
 from bs4 import BeautifulSoup
 from typing import Union
+from zipfile import ZipFile
 from ..dictionary import Dictionary
 from . import form as form
 
@@ -226,6 +227,7 @@ def add_note_definition(note: Note, dictionary: Dictionary) -> Union[Note, None]
     if not definition:
         return None
 
+    definition = sanitize_image_sources(definition, dictionary.path)
     note[config["destination_field"]] = definition
 
     return note
@@ -245,3 +247,23 @@ def validate_update(note: Note, config: dict) -> bool:
         return False
 
     return True
+
+
+def sanitize_image_sources(text: str, dict_path: str) -> str:
+    soup = BeautifulSoup(text, "html.parser")
+    img_matches = soup.find_all("img")
+
+    if not img_matches:
+        return str(soup)
+
+    with ZipFile(dict_path, "r") as zip_file:
+        for img in img_matches:
+            if img.has_attr("path"):
+                img["src"] = img["path"]
+                del img["path"]
+
+            img_file = zip_file.extract(img["src"])
+            new_path = mw.col.media.add_file(img_file)
+            img["src"] = new_path
+
+    return str(soup)

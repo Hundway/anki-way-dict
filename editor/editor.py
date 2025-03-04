@@ -56,6 +56,8 @@ class EditorDialog(QDialog):
         self.form.browse.clicked.connect(self.on_browse)
         self.form.search.clicked.connect(self.on_search)
         self.form.start.clicked.connect(self.on_start)
+        self.form.prev.clicked.connect(self.on_prev)
+        self.form.next.clicked.connect(self.on_next)
 
         self.form.note_type.currentIndexChanged.connect(self.update_field_items)
         self.form.note_type.currentIndexChanged.connect(
@@ -122,6 +124,16 @@ class EditorDialog(QDialog):
 
     def on_radio_change(self, radio: QRadioButton) -> None:
         self.config[radio.objectName()] = radio.isChecked()
+
+    def on_prev(self) -> None:
+        current_index = self.form.stackedWidget.currentIndex()
+        if current_index > 0:
+            self.form.stackedWidget.setCurrentIndex(current_index - 1)
+
+    def on_next(self) -> None:
+        current_index = self.form.stackedWidget.currentIndex()
+        if current_index < self.form.stackedWidget.count() - 1:
+            self.form.stackedWidget.setCurrentIndex(current_index + 1)
 
     def on_browse(self) -> None:
         path = QFileDialog.getOpenFileName(

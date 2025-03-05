@@ -75,34 +75,6 @@ class Ui_regex_edit(QWidget):
         self.edit.setIcon(icon2)
         self.edit.setIconSize(QSize(16, 20))
         self.edit.setObjectName("edit")
-        self.clone = QToolButton(parent=regex_edit)
-        self.clone.setGeometry(QRect(355, 0, 20, 20))
-        self.clone.setStyleSheet("border: none; background: transparent;")
-        icon3 = QIcon()
-        icon3.addPixmap(
-            QPixmap(
-                r"C:\Users\Hundway\AppData\Roaming\Anki2\addons21\anki-way-dict\graphics\icons\clone.png"
-            ),
-            QIcon.Mode.Normal,
-            QIcon.State.Off,
-        )
-        self.clone.setIcon(icon3)
-        self.clone.setIconSize(QSize(16, 20))
-        self.clone.setObjectName("clone")
-        self.remove = QToolButton(parent=regex_edit)
-        self.remove.setGeometry(QRect(380, 0, 20, 20))
-        self.remove.setStyleSheet("border: none; background: transparent;")
-        icon4 = QIcon()
-        icon4.addPixmap(
-            QPixmap(
-                r"C:\Users\Hundway\AppData\Roaming\Anki2\addons21\anki-way-dict\graphics\icons\remove.png"
-            ),
-            QIcon.Mode.Normal,
-            QIcon.State.Off,
-        )
-        self.remove.setIcon(icon4)
-        self.remove.setIconSize(QSize(16, 20))
-        self.remove.setObjectName("remove")
 
         self.retranslateUi(regex_edit)
         QMetaObject.connectSlotsByName(regex_edit)
@@ -119,8 +91,6 @@ class RegexEditWidget(QWidget):
     up_clicked = pyqtSignal(QWidget)
     down_clicked = pyqtSignal(QWidget)
     edit_clicked = pyqtSignal(QWidget)
-    clone_clicked = pyqtSignal(QWidget)
-    remove_clicked = pyqtSignal(QWidget)
 
     def __init__(self, name: str, pattern: str = "", replacement: str = "", parent=None):
         super().__init__(parent)
@@ -139,8 +109,6 @@ class RegexEditWidget(QWidget):
         self.ui.up.clicked.connect(self.on_up)
         self.ui.down.clicked.connect(self.on_down)
         self.ui.edit.clicked.connect(self.on_edit)
-        self.ui.clone.clicked.connect(self.on_clone)
-        self.ui.remove.clicked.connect(self.on_remove)
 
     def on_up(self):
         self.up_clicked.emit(self)
@@ -155,12 +123,6 @@ class RegexEditWidget(QWidget):
             self.collapse()
         self.collapsed = not self.collapsed
         self.edit_clicked.emit(self)
-
-    def on_clone(self):
-        self.clone_clicked.emit(self)
-
-    def on_remove(self):
-        self.remove_clicked.emit(self)
 
     def set_name(self, name: str):
         self.ui.name.setText(name)
@@ -188,7 +150,6 @@ class RegexEditWidget(QWidget):
             geometry.setX(geometry.x() - 4)
             self.ui.name = QLineEdit(self.name, self)
             self.ui.name.setStyleSheet("border: none; background: transparent;")
-            self.ui.setStyleSheet("background: red;")
         else:
             geometry.setX(geometry.x() + 4)
             self.ui.name = QLabel(self.name, self)

@@ -7,7 +7,15 @@ from aqt.browser import Browser
 from aqt.editor import Editor
 from aqt.operations import CollectionOp, QueryOp
 from aqt.operations.note import OpChangesWithCount
-from aqt.qt import QDialog, QFileDialog, QComboBox, QRadioButton, QListWidgetItem, QSize
+from aqt.qt import (
+    QDialog,
+    QFileDialog,
+    QComboBox,
+    QRadioButton,
+    QListWidgetItem,
+    QSize,
+    QAbstractItemView,
+)
 from aqt.utils import tooltip
 from bs4 import BeautifulSoup
 from typing import Union
@@ -53,12 +61,15 @@ class EditorDialog(QDialog):
         self.update_combo(self.form.destination_field, self.config["destination_field"])
         self.form.overwrite_destination.setChecked(self.config["overwrite_destination"])
 
-        self.form.text_format.currentIndexChanged.connect(self.on_text_format_change)
         self.form.browse.clicked.connect(self.on_browse)
         self.form.search.clicked.connect(self.on_search)
-        self.form.start.clicked.connect(self.on_start)
+        self.form.text_format.currentIndexChanged.connect(self.on_text_format_change)
         self.form.prev.clicked.connect(self.on_prev)
         self.form.next.clicked.connect(self.on_next)
+        self.form.start.clicked.connect(self.on_start)
+        self.form.add.clicked.connect(self.on_item_add)
+        self.form.remove.clicked.connect(self.on_item_remove)
+        self.form.clone.clicked.connect(self.on_item_clone)
 
         self.form.note_type.currentIndexChanged.connect(self.update_field_items)
         self.form.note_type.currentIndexChanged.connect(
@@ -211,7 +222,7 @@ class EditorDialog(QDialog):
 
     def add_regex_item(
         self, name: str, pattern: str = "", replacement: str = "", index: int = -1
-    ) -> None:
+    ) -> tuple[QListWidgetItem, RegexEditWidget]:
         item = QListWidgetItem()
         item.setSizeHint(QSize(411, 22))
         widget = RegexEditWidget(name, pattern, replacement)
@@ -224,44 +235,66 @@ class EditorDialog(QDialog):
         widget.up_clicked.connect(self.on_item_up)
         widget.down_clicked.connect(self.on_item_down)
         widget.edit_clicked.connect(self.on_item_edit)
-        widget.clone_clicked.connect(self.on_item_clone)
-        widget.remove_clicked.connect(self.on_item_remove)
+
+        return item, widget
 
     def on_item_up(self, widget: RegexEditWidget) -> None:
         item = self.form.regex_list.itemAt(widget.pos())
         index = self.form.regex_list.row(item)
+
         if index > 0:
             self.form.regex_list.takeItem(index)
-            self.add_regex_item(
+            item, _ = self.add_regex_item(
                 widget.name, widget.pattern, widget.replacement, index - 1
             )
+
+        item.setSelected(True)
 
     def on_item_down(self, widget: RegexEditWidget) -> None:
         item = self.form.regex_list.itemAt(widget.pos())
         index = self.form.regex_list.row(item)
+
         if index < self.form.regex_list.count() - 1:
             self.form.regex_list.takeItem(index)
-            self.add_regex_item(
+            item, _ = self.add_regex_item(
                 widget.name, widget.pattern, widget.replacement, index + 1
             )
+
+        item.setSelected(True)
 
     def on_item_edit(self, widget: RegexEditWidget) -> None:
         item = self.form.regex_list.itemAt(widget.pos())
         item.setSizeHint(widget.sizeHint())
 
-    def on_item_clone(self, widget: RegexEditWidget) -> None:
+        if widget.collapsed:
+            self.form.regex_list.setSelectionMode(
+                QAbstractItemView.SelectionMode.SingleSelection
+            )
+            self.form.regex_list.verticalScrollBar().setDisabled(False)
+        else:
+            self.form.regex_list.scrollToItem(item)
+            self.form.regex_list.setSelectionMode(
+                QAbstractItemView.SelectionMode.NoSelection
+            )
+            self.form.regex_list.verticalScrollBar().setDisabled(True)
+
+    def on_item_clone(self) -> None:
+        item = self.form.regex_list.currentItem()
+        widget = self.form.regex_list.itemWidget(item)
         name = widget.name + " copy"
         pattern = widget.pattern
         replacement = widget.replacement
 
-        item = self.form.regex_list.itemAt(widget.pos())
         self.add_regex_item(
             name, pattern, replacement, self.form.regex_list.row(item) + 1
         )
 
-    def on_item_remove(self, widget: RegexEditWidget) -> None:
-        item = self.form.regex_list.itemAt(widget.pos())
+    def on_item_remove(self) -> None:
+        item = self.form.regex_list.currentItem()
         self.form.regex_list.takeItem(self.form.regex_list.row(item))
+
+    def on_item_add(self) -> None:
+        self.add_regex_item("New style")
 
 
 def bulk_add_note_definition(nids: list[int], dictionary: Dictionary) -> list[Note]:

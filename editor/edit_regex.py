@@ -16,25 +16,25 @@ from aqt.qt import (
 class Ui_regex_edit(QWidget):
     def setupUi(self, regex_edit):
         regex_edit.setObjectName("regex_edit")
-        regex_edit.resize(411, 71)
+        regex_edit.resize(421, 71)
         regex_edit.setStyleSheet("")
         self.name = QLabel(parent=regex_edit)
-        self.name.setGeometry(QRect(1, 0, 271, 20))
+        self.name.setGeometry(QRect(10, 0, 311, 20))
         self.name.setObjectName("name")
         self.pattern_label = QLabel(parent=regex_edit)
-        self.pattern_label.setGeometry(QRect(1, 20, 181, 21))
+        self.pattern_label.setGeometry(QRect(10, 20, 181, 21))
         self.pattern_label.setObjectName("pattern_label")
         self.pattern = QLineEdit(parent=regex_edit)
-        self.pattern.setGeometry(QRect(0, 40, 181, 21))
+        self.pattern.setGeometry(QRect(9, 40, 181, 21))
         self.pattern.setObjectName("pattern")
         self.replacement_label = QLabel(parent=regex_edit)
-        self.replacement_label.setGeometry(QRect(215, 20, 181, 21))
+        self.replacement_label.setGeometry(QRect(229, 20, 181, 21))
         self.replacement_label.setObjectName("replacement_label")
         self.replacement = QLineEdit(parent=regex_edit)
-        self.replacement.setGeometry(QRect(214, 40, 181, 21))
+        self.replacement.setGeometry(QRect(228, 40, 181, 21))
         self.replacement.setObjectName("replacement")
         self.up = QToolButton(parent=regex_edit)
-        self.up.setGeometry(QRect(280, 0, 20, 20))
+        self.up.setGeometry(QRect(340, 0, 20, 20))
         self.up.setStyleSheet("border: none; background: transparent;")
         icon = QIcon()
         icon.addPixmap(
@@ -48,7 +48,7 @@ class Ui_regex_edit(QWidget):
         self.up.setIconSize(QSize(16, 20))
         self.up.setObjectName("up")
         self.down = QToolButton(parent=regex_edit)
-        self.down.setGeometry(QRect(305, 0, 20, 20))
+        self.down.setGeometry(QRect(365, 0, 20, 20))
         self.down.setStyleSheet("border: none; background: transparent;")
         icon1 = QIcon()
         icon1.addPixmap(
@@ -62,7 +62,7 @@ class Ui_regex_edit(QWidget):
         self.down.setIconSize(QSize(16, 20))
         self.down.setObjectName("down")
         self.edit = QToolButton(parent=regex_edit)
-        self.edit.setGeometry(QRect(330, 0, 20, 20))
+        self.edit.setGeometry(QRect(390, 0, 20, 20))
         self.edit.setStyleSheet("border: none; background: transparent;")
         icon2 = QIcon()
         icon2.addPixmap(
@@ -75,6 +75,18 @@ class Ui_regex_edit(QWidget):
         self.edit.setIcon(icon2)
         self.edit.setIconSize(QSize(16, 20))
         self.edit.setObjectName("edit")
+        self.count = QLineEdit(parent=regex_edit)
+        self.count.setGeometry(QRect(9, 80, 181, 21))
+        self.count.setObjectName("count")
+        self.count_label = QLabel(parent=regex_edit)
+        self.count_label.setGeometry(QRect(10, 60, 181, 21))
+        self.count_label.setObjectName("count_label")
+        self.flags = QLineEdit(parent=regex_edit)
+        self.flags.setGeometry(QRect(229, 80, 180, 21))
+        self.flags.setObjectName("flags")
+        self.flags_label = QLabel(parent=regex_edit)
+        self.flags_label.setGeometry(QRect(230, 60, 180, 21))
+        self.flags_label.setObjectName("flags_label")
 
         self.retranslateUi(regex_edit)
         QMetaObject.connectSlotsByName(regex_edit)
@@ -85,6 +97,8 @@ class Ui_regex_edit(QWidget):
         self.name.setText(_translate("regex_edit", "Regex label"))
         self.pattern_label.setText(_translate("regex_edit", "Pattern"))
         self.replacement_label.setText(_translate("regex_edit", "Replacement"))
+        self.count_label.setText(_translate("regex_edit", "Count"))
+        self.flags_label.setText(_translate("regex_edit", "Flags"))
 
 
 class RegexEditWidget(QWidget):
@@ -139,7 +153,7 @@ class RegexEditWidget(QWidget):
 
     def expand(self):
         self.toggle_name_editable(True)
-        self._reshape((401, 66))
+        self._reshape((401, 111))
 
     def toggle_name_editable(self, editable: bool):
         self.name = self.ui.name.text()

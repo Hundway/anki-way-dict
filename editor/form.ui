@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>461</width>
-    <height>481</height>
+    <width>460</width>
+    <height>470</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,82 +16,41 @@
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
-  <widget class="QPushButton" name="search">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>130</y>
-     <width>121</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
-   <property name="locale">
-    <locale language="English" country="UnitedStates"/>
-   </property>
-   <property name="text">
-    <string>Search</string>
-   </property>
-  </widget>
-  <widget class="QTabWidget" name="tabWidget">
+  <widget class="QLabel" name="dictionary_options_label">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>90</y>
-     <width>281</width>
-     <height>181</height>
+     <y>10</y>
+     <width>191</width>
+     <height>31</height>
     </rect>
    </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
-   <property name="currentIndex">
-    <number>0</number>
+   <property name="text">
+    <string>Dictionary options</string>
    </property>
-   <widget class="QWidget" name="tab_1">
-    <attribute name="title">
-     <string>Preview</string>
-    </attribute>
-    <widget class="DefinitionWebView" name="definition_preview" native="true">
-     <property name="geometry">
-      <rect>
-       <x>-1</x>
-       <y>-1</y>
-       <width>281</width>
-       <height>151</height>
-      </rect>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="title">
-     <string>Source</string>
-    </attribute>
-    <widget class="QTextEdit" name="definition_source">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>281</width>
-       <height>151</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="placeholderText">
-      <string>The definition of the word should appear here after pressing the &quot;search&quot; button.</string>
-     </property>
-    </widget>
-   </widget>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
+  </widget>
+  <widget class="Line" name="dictionary_options_line">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>421</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
   </widget>
   <widget class="QLineEdit" name="dictionary_title">
    <property name="geometry">
@@ -121,35 +80,6 @@
     <string>Select your dictionary</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="text_format">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>250</y>
-     <width>121</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
-   <property name="locale">
-    <locale language="English" country="UnitedStates"/>
-   </property>
-  </widget>
-  <widget class="Line" name="line">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>421</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
   <widget class="QPushButton" name="browse">
    <property name="geometry">
     <rect>
@@ -168,51 +98,68 @@
    <property name="text">
     <string>Browse</string>
    </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>220</y>
-     <width>121</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="locale">
-    <locale language="English" country="UnitedStates"/>
-   </property>
-   <property name="text">
-    <string>Text format</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-   <property name="textInteractionFlags">
-    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   <property name="icon">
+    <iconset>
+     <normaloff>../graphics/icons/browse.png</normaloff>../graphics/icons/browse.png</iconset>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>10</y>
-     <width>191</width>
-     <height>31</height>
+     <y>90</y>
+     <width>281</width>
+     <height>181</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <pointsize>14</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
    </property>
-   <property name="text">
-    <string>Dictionary options</string>
+   <property name="currentIndex">
+    <number>0</number>
    </property>
-   <property name="textInteractionFlags">
-    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-   </property>
+   <widget class="QWidget" name="preview">
+    <attribute name="title">
+     <string>Preview</string>
+    </attribute>
+    <widget class="DefinitionWebView" name="definition_preview" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>281</width>
+       <height>156</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="source">
+    <attribute name="title">
+     <string>Source</string>
+    </attribute>
+    <widget class="QTextEdit" name="definition_source">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>281</width>
+       <height>156</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="placeholderText">
+      <string>The definition of the word should appear here after pressing the &quot;search&quot; button.</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QLineEdit" name="word">
    <property name="geometry">
@@ -239,6 +186,67 @@
     <string>Enter a word</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="search">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>130</y>
+     <width>121</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="locale">
+    <locale language="English" country="UnitedStates"/>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../graphics/icons/search.png</normaloff>../graphics/icons/search.png</iconset>
+   </property>
+  </widget>
+  <widget class="QLabel" name="text_format_label">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>220</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="locale">
+    <locale language="English" country="UnitedStates"/>
+   </property>
+   <property name="text">
+    <string>Text format</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="text_format">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>250</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="locale">
+    <locale language="English" country="UnitedStates"/>
+   </property>
+  </widget>
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
@@ -252,64 +260,7 @@
     <number>1</number>
    </property>
    <widget class="QWidget" name="note_options">
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>70</y>
-       <width>131</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="locale">
-      <locale language="English" country="UnitedStates"/>
-     </property>
-     <property name="text">
-      <string>Source field</string>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>130</y>
-       <width>131</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="locale">
-      <locale language="English" country="UnitedStates"/>
-     </property>
-     <property name="text">
-      <string>Overwrite destination</string>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>40</y>
-       <width>131</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="locale">
-      <locale language="English" country="UnitedStates"/>
-     </property>
-     <property name="text">
-      <string>Note type</string>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_6">
+    <widget class="QLabel" name="note_options_label">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -332,7 +283,99 @@
       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4">
+    <widget class="Line" name="note_options_line">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>421</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-color: red;</string>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="note_type_label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>40</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
+     </property>
+     <property name="text">
+      <string>Note type</string>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="note_type">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>40</y>
+       <width>281</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="source_field_label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>70</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
+     </property>
+     <property name="text">
+      <string>Source field</string>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="source_field">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>70</y>
+       <width>281</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="destination_field_label">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -367,61 +410,23 @@
       <locale language="English" country="UnitedStates"/>
      </property>
     </widget>
-    <widget class="QComboBox" name="note_type">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>40</y>
-       <width>281</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
-     </property>
-     <property name="locale">
-      <locale language="English" country="UnitedStates"/>
-     </property>
-    </widget>
-    <widget class="Line" name="line_2">
+    <widget class="QLabel" name="overwrite_destination_label">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>20</y>
-       <width>421</width>
-       <height>20</height>
+       <y>130</y>
+       <width>131</width>
+       <height>21</height>
       </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-color: red;</string>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="start">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>160</y>
-       <width>421</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
      </property>
      <property name="locale">
       <locale language="English" country="UnitedStates"/>
      </property>
      <property name="text">
-      <string>Start</string>
+      <string>Overwrite destination</string>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
      </property>
     </widget>
     <widget class="QCheckBox" name="overwrite_destination">
@@ -443,13 +448,13 @@
       <string/>
      </property>
     </widget>
-    <widget class="QComboBox" name="source_field">
+    <widget class="QPushButton" name="start">
      <property name="geometry">
       <rect>
-       <x>140</x>
-       <y>70</y>
-       <width>281</width>
-       <height>22</height>
+       <x>0</x>
+       <y>160</y>
+       <width>421</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="focusPolicy">
@@ -458,10 +463,40 @@
      <property name="locale">
       <locale language="English" country="UnitedStates"/>
      </property>
+     <property name="text">
+      <string>Start</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../graphics/icons/start.png</normaloff>../graphics/icons/start.png</iconset>
+     </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="entry_format">
-    <widget class="Line" name="line_3">
+   <widget class="QWidget" name="entry_style">
+    <widget class="QLabel" name="entry_style_label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Entry style</string>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+     </property>
+    </widget>
+    <widget class="Line" name="entry_style_line">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -487,64 +522,94 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>41</y>
+       <y>40</y>
        <width>421</width>
-       <height>141</height>
+       <height>111</height>
       </rect>
      </property>
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
-      <string notr="true">QListWidget{background-color: transparent; padding: 5px;}</string>
+      <string notr="true">QListWidget{background-color: transparent;}</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
     </widget>
-    <widget class="QLabel" name="label_8">
+    <widget class="QPushButton" name="add">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>0</y>
-       <width>191</width>
-       <height>31</height>
+       <y>160</y>
+       <width>131</width>
+       <height>23</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
      </property>
      <property name="text">
-      <string>Entry style</string>
+      <string>Add</string>
      </property>
-     <property name="textInteractionFlags">
-      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+     <property name="icon">
+      <iconset>
+       <normaloff>../graphics/icons/add.png</normaloff>../graphics/icons/add.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="remove">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>160</y>
+       <width>141</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
+     </property>
+     <property name="text">
+      <string>Remove</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../graphics/icons/remove.png</normaloff>../graphics/icons/remove.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clone">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>160</y>
+       <width>131</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
+     </property>
+     <property name="text">
+      <string>Clone</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>../graphics/icons/clone.png</normaloff>../graphics/icons/clone.png</iconset>
      </property>
     </widget>
    </widget>
-  </widget>
-  <widget class="QToolButton" name="prev">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>290</y>
-     <width>25</width>
-     <height>19</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border: none; background: transparent;</string>
-   </property>
-   <property name="text">
-    <string>...</string>
-   </property>
-   <property name="arrowType">
-    <enum>Qt::LeftArrow</enum>
-   </property>
   </widget>
   <widget class="QToolButton" name="next">
    <property name="geometry">
@@ -563,6 +628,25 @@
    </property>
    <property name="arrowType">
     <enum>Qt::RightArrow</enum>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="prev">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>290</y>
+     <width>25</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: none; background: transparent;</string>
+   </property>
+   <property name="text">
+    <string>...</string>
+   </property>
+   <property name="arrowType">
+    <enum>Qt::LeftArrow</enum>
    </property>
   </widget>
  </widget>

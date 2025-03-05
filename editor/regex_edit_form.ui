@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>411</width>
-    <height>71</height>
+    <width>421</width>
+    <height>111</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,9 +19,9 @@
   <widget class="QLabel" name="name">
    <property name="geometry">
     <rect>
-     <x>1</x>
+     <x>10</x>
      <y>0</y>
-     <width>271</width>
+     <width>311</width>
      <height>20</height>
     </rect>
    </property>
@@ -32,7 +32,7 @@
   <widget class="QLabel" name="pattern_label">
    <property name="geometry">
     <rect>
-     <x>1</x>
+     <x>10</x>
      <y>20</y>
      <width>181</width>
      <height>21</height>
@@ -45,7 +45,7 @@
   <widget class="QLineEdit" name="pattern">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>9</x>
      <y>40</y>
      <width>181</width>
      <height>21</height>
@@ -55,9 +55,9 @@
   <widget class="QLabel" name="replacement_label">
    <property name="geometry">
     <rect>
-     <x>220</x>
+     <x>229</x>
      <y>20</y>
-     <width>181</width>
+     <width>180</width>
      <height>21</height>
     </rect>
    </property>
@@ -68,9 +68,9 @@
   <widget class="QLineEdit" name="replacement">
    <property name="geometry">
     <rect>
-     <x>219</x>
+     <x>228</x>
      <y>40</y>
-     <width>181</width>
+     <width>180</width>
      <height>21</height>
     </rect>
    </property>
@@ -78,7 +78,7 @@
   <widget class="QToolButton" name="up">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>340</x>
      <y>0</y>
      <width>20</width>
      <height>20</height>
@@ -101,7 +101,7 @@
   <widget class="QToolButton" name="down">
    <property name="geometry">
     <rect>
-     <x>305</x>
+     <x>365</x>
      <y>0</y>
      <width>20</width>
      <height>20</height>
@@ -124,7 +124,7 @@
   <widget class="QToolButton" name="edit">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>390</x>
      <y>0</y>
      <width>20</width>
      <height>20</height>
@@ -144,50 +144,50 @@
     </size>
    </property>
   </widget>
-  <widget class="QToolButton" name="clone">
+  <widget class="QLineEdit" name="count">
    <property name="geometry">
     <rect>
-     <x>355</x>
-     <y>0</y>
-     <width>20</width>
-     <height>20</height>
+     <x>9</x>
+     <y>80</y>
+     <width>181</width>
+     <height>21</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border: none; background: transparent;</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>../graphics/icons/clone.png</normaloff>../graphics/icons/clone.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>20</height>
-    </size>
    </property>
   </widget>
-  <widget class="QToolButton" name="remove">
+  <widget class="QLabel" name="count_label">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>0</y>
-     <width>20</width>
-     <height>20</height>
+     <x>10</x>
+     <y>60</y>
+     <width>181</width>
+     <height>21</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">border: none; background: transparent;</string>
+   <property name="text">
+    <string>Count</string>
    </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>../graphics/icons/remove.png</normaloff>../graphics/icons/remove.png</iconset>
+  </widget>
+  <widget class="QLineEdit" name="flags">
+   <property name="geometry">
+    <rect>
+     <x>229</x>
+     <y>80</y>
+     <width>180</width>
+     <height>21</height>
+    </rect>
    </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>20</height>
-    </size>
+  </widget>
+  <widget class="QLabel" name="flags_label">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>60</y>
+     <width>180</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Flags</string>
    </property>
   </widget>
  </widget>

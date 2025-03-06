@@ -472,8 +472,8 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="entry_style">
-    <widget class="QLabel" name="entry_style_label">
+   <widget class="QWidget" name="regex_formatter">
+    <widget class="QLabel" name="regex_formatter_label">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -490,13 +490,13 @@
       </font>
      </property>
      <property name="text">
-      <string>Entry style</string>
+      <string>Regex formatter</string>
      </property>
      <property name="textInteractionFlags">
       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
      </property>
     </widget>
-    <widget class="Line" name="entry_style_line">
+    <widget class="Line" name="regex_formatter_line">
      <property name="geometry">
       <rect>
        <x>0</x>

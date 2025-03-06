@@ -4,5 +4,6 @@
     "source_field": "",
     "destination_field": "",
     "overwrite_destination": false,
-    "text_format": "HTML-Full"
+    "text_format": "HTML-Full",
+    "regex_formatter": []
 }

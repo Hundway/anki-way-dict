@@ -1,5 +1,7 @@
 import aqt
 import aqt.qt
+import logging
+import re
 from anki.notes import Note
 from anki.collection import Collection
 from aqt import mw
@@ -167,6 +169,8 @@ class EditorDialog(QDialog):
     def on_search(self) -> None:
         def lookup_definition(word: str) -> str:
             definition = self.dictionary.find_definition(word, self.config["text_format"])
+            for item in self.config["regex_formatter"]:
+                definition = apply_regex(definition, item)
             return definition if definition else f"No entries found for '{word}'."
 
         word = self.form.word.text()
@@ -347,6 +351,9 @@ def add_note_definition(note: Note, dictionary: Dictionary) -> Union[Note, None]
         note[config["source_field"]], config["text_format"]
     )
 
+    for item in config["regex_formatter"]:
+        definition = apply_regex(definition, item)
+
     if not definition:
         return None
 
@@ -369,3 +376,24 @@ def validate_update(note: Note, config: dict) -> bool:
         return False
 
     return True
+
+
+def apply_regex(text: str, regex_args: dict) -> str:
+    pattern = regex_args["pattern"]
+    repl = regex_args["replacement"]
+    count = int(regex_args["count"])
+    flags = parse_regex_flags(regex_args["flags"])
+
+    try:
+        return re.sub(pattern, repl, text, count, flags)
+    except re.error as e:
+        logging.error(e)
+        return text
+
+
+def parse_regex_flags(flags: str) -> int:
+    flags = flags.replace(" ", "").split("|")
+    flag_mask = 0
+    for flag in flags:
+        flag_mask |= getattr(re, flag)
+    return flag_mask

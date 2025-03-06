@@ -19,7 +19,6 @@ from aqt.qt import (
     QListWidget,
     QIcon,
     QPixmap,
-    QIcon,
 )
 from pathlib import Path
 from .definition_web_view import DefinitionWebView
@@ -313,8 +312,6 @@ class Ui_Dialog(object):
         self.clone.setLocale(
             QLocale(QLocale.Language.English, QLocale.Country.UnitedStates)
         )
-        # show current path
-
         icon5 = QIcon()
         icon5.addPixmap(
             QPixmap(

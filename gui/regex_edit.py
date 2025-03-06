@@ -169,7 +169,7 @@ class RegexEditWidget(QWidget):
 
     def get_count(self):
         return self.ui.count.text()
-    
+
     def get_flags(self):
         return self.ui.flags.text()
 

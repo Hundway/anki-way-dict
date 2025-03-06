@@ -5,7 +5,7 @@ from aqt.editor import Editor
 from aqt.browser import Browser
 from aqt.utils import tooltip
 from aqt.qt import QMenu
-from .editor import EditorDialog
+from .gui import EditorDialog
 
 
 def editor_action(browser: Browser, menu: QMenu = None) -> None:

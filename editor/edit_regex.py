@@ -106,17 +106,22 @@ class RegexEditWidget(QWidget):
     down_clicked = pyqtSignal(QWidget)
     edit_clicked = pyqtSignal(QWidget)
 
-    def __init__(self, name: str, pattern: str = "", replacement: str = "", parent=None):
-        super().__init__(parent)
+    def __init__(
+        self,
+        name: str,
+        pattern: str = "",
+        replacement: str = "",
+        count: str = "",
+        flags: str = "",
+    ):
+        super().__init__()
         self.ui = Ui_regex_edit()
         self.ui.setupUi(self)
-
-        self.name = name
-        self.pattern = pattern
-        self.replacement = replacement
-        self.set_name(self.name)
-        self.set_pattern(self.pattern)
-        self.set_replacement(self.replacement)
+        self.set_name(name)
+        self.set_pattern(pattern)
+        self.set_replacement(replacement)
+        self.set_count(count)
+        self.set_flags(flags)
         self.geometry = QSize(401, 20)
         self.collapsed = True
 
@@ -141,11 +146,32 @@ class RegexEditWidget(QWidget):
     def set_name(self, name: str):
         self.ui.name.setText(name)
 
-    def set_pattern(self, name: str):
-        self.ui.pattern.setText(name)
+    def set_pattern(self, pattern: str):
+        self.ui.pattern.setText(pattern)
 
-    def set_replacement(self, name: str):
-        self.ui.replacement.setText(name)
+    def set_replacement(self, replacement: str):
+        self.ui.replacement.setText(replacement)
+
+    def set_count(self, count: str):
+        self.ui.count.setText(count)
+
+    def set_flags(self, flags: str):
+        self.ui.flags.setText(flags)
+
+    def get_name(self):
+        return self.ui.name.text()
+
+    def get_pattern(self):
+        return self.ui.pattern.text()
+
+    def get_replacement(self):
+        return self.ui.replacement.text()
+
+    def get_count(self):
+        return self.ui.count.text()
+    
+    def get_flags(self):
+        return self.ui.flags.text()
 
     def collapse(self):
         self.toggle_name_editable(False)

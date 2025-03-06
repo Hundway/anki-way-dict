@@ -60,6 +60,8 @@ class EditorDialog(QDialog):
         self.update_combo(self.form.source_field, self.config["source_field"])
         self.update_combo(self.form.destination_field, self.config["destination_field"])
         self.form.overwrite_destination.setChecked(self.config["overwrite_destination"])
+        for item in self.config["regex_formatter"]:
+            self.add_regex_item(**item)
 
         self.form.browse.clicked.connect(self.on_browse)
         self.form.search.clicked.connect(self.on_search)
@@ -84,9 +86,6 @@ class EditorDialog(QDialog):
         self.form.overwrite_destination.stateChanged.connect(
             lambda: self.on_radio_change(self.form.overwrite_destination)
         )
-        self.add_regex_item("Remove html tags")
-        self.add_regex_item("Remove empty elements")
-        self.add_regex_item("Trail leading spaces")
 
     def update_dict_path(self, path: str) -> None:
         if Dictionary.validate_file(path):
@@ -237,7 +236,6 @@ class EditorDialog(QDialog):
 
         self.form.regex_list.insertItem(idx, item)
         self.form.regex_list.setItemWidget(item, widget)
-        self.config["regex_formatter"].insert(idx, self.regex_item_to_dict(item))
 
         widget.up_clicked.connect(self.on_item_up)
         widget.down_clicked.connect(self.on_item_down)
@@ -251,11 +249,9 @@ class EditorDialog(QDialog):
 
         if idx > 0:
             self.form.regex_list.takeItem(idx)
-            item, _ = self.add_regex_item(
-                widget.name, widget.pattern, widget.replacement, idx - 1
-            )
+            item, widget = self.add_regex_item(**self.regex_to_dict(widget), idx=idx - 1)
             self.config["regex_formatter"].pop(idx)
-            self.config["regex_formatter"].insert(idx - 1, self.regex_item_to_dict(item))
+            self.config["regex_formatter"].insert(idx - 1, self.regex_to_dict(widget))
 
         item.setSelected(True)
 
@@ -265,11 +261,9 @@ class EditorDialog(QDialog):
 
         if idx < self.form.regex_list.count() - 1:
             self.form.regex_list.takeItem(idx)
-            item, _ = self.add_regex_item(
-                widget.name, widget.pattern, widget.replacement, idx + 1
-            )
+            item, widget = self.add_regex_item(**self.regex_to_dict(widget), idx=idx + 1)
             self.config["regex_formatter"].pop(idx)
-            self.config["regex_formatter"].insert(idx + 1, self.regex_item_to_dict(item))
+            self.config["regex_formatter"].insert(idx + 1, self.regex_to_dict(widget))
 
         item.setSelected(True)
 
@@ -284,7 +278,7 @@ class EditorDialog(QDialog):
             )
             self.form.regex_list.verticalScrollBar().setDisabled(False)
             item.setSelected(True)
-            self.config["regex_formatter"][idx] = self.regex_item_to_dict(item)
+            self.config["regex_formatter"][idx] = self.regex_to_dict(widget)
 
         else:
             self.form.regex_list.scrollToItem(item)
@@ -292,13 +286,13 @@ class EditorDialog(QDialog):
                 QAbstractItemView.SelectionMode.NoSelection
             )
             self.form.regex_list.verticalScrollBar().setDisabled(True)
-            print(self.config)
 
     def on_item_clone(self) -> None:
         item = self.form.regex_list.currentItem()
         idx = self.form.regex_list.row(item)
-        item = self.regex_item_to_dict(item)
-        self.add_regex_item(*item.values(), idx=idx + 1)
+        item = self.regex_to_dict(item)
+        self.add_regex_item(**item, idx=idx + 1)
+        self.config["regex_formatter"].insert(idx + 1, item)
 
     def on_item_remove(self) -> None:
         item = self.form.regex_list.currentItem()
@@ -307,10 +301,14 @@ class EditorDialog(QDialog):
         self.config["regex_formatter"].pop(idx)
 
     def on_item_add(self) -> None:
-        self.add_regex_item("New style")
+        _, widget = self.add_regex_item("New style")
+        self.config["regex_formatter"].append(self.regex_to_dict(widget))
 
-    def regex_item_to_dict(self, item: QListWidgetItem) -> dict:
-        widget = self.form.regex_list.itemWidget(item)
+    def regex_to_dict(self, item: Union[RegexEditWidget, QListWidgetItem]) -> dict:
+        if isinstance(item, RegexEditWidget):
+            widget = item
+        elif isinstance(item, QListWidgetItem):
+            widget = self.form.regex_list.itemWidget(item)
         return {
             "name": widget.get_name(),
             "pattern": widget.get_pattern(),

@@ -85,7 +85,7 @@ class Ui_Dialog(object):
         self.source = QWidget()
         self.source.setObjectName("source")
         self.definition_source = QTextEdit(parent=self.source)
-        self.definition_source.setGeometry(QRect(0, 0, 281, 156))
+        self.definition_source.setGeometry(QRect(-1, 0, 281, 156))
         self.definition_source.setStyleSheet("")
         self.definition_source.setReadOnly(True)
         self.definition_source.setObjectName("definition_source")
@@ -242,21 +242,21 @@ class Ui_Dialog(object):
         self.start.setIcon(icon2)
         self.start.setObjectName("start")
         self.stackedWidget.addWidget(self.note_options)
-        self.entry_style = QWidget()
-        self.entry_style.setObjectName("entry_style")
-        self.entry_style_label = QLabel(parent=self.entry_style)
-        self.entry_style_label.setGeometry(QRect(0, 0, 191, 31))
+        self.regex_formatter = QWidget()
+        self.regex_formatter.setObjectName("regex_formatter")
+        self.regex_formatter_label = QLabel(parent=self.regex_formatter)
+        self.regex_formatter_label.setGeometry(QRect(0, 0, 191, 31))
         font = QFont()
         font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
-        self.entry_style_label.setFont(font)
-        self.entry_style_label.setTextInteractionFlags(
+        self.regex_formatter_label.setFont(font)
+        self.regex_formatter_label.setTextInteractionFlags(
             Qt.TextInteractionFlag.LinksAccessibleByMouse
             | Qt.TextInteractionFlag.TextSelectableByMouse
         )
-        self.entry_style_label.setObjectName("entry_style_label")
-        self.entry_style_line = QFrame(parent=self.entry_style)
+        self.regex_formatter_label.setObjectName("entry_style_label")
+        self.entry_style_line = QFrame(parent=self.regex_formatter)
         self.entry_style_line.setGeometry(QRect(0, 20, 421, 20))
         font = QFont()
         font.setBold(True)
@@ -266,7 +266,7 @@ class Ui_Dialog(object):
         self.entry_style_line.setFrameShape(QFrame.Shape.HLine)
         self.entry_style_line.setFrameShadow(QFrame.Shadow.Sunken)
         self.entry_style_line.setObjectName("entry_style_line")
-        self.regex_list = QListWidget(parent=self.entry_style)
+        self.regex_list = QListWidget(parent=self.regex_formatter)
         self.regex_list.setGeometry(QRect(0, 40, 421, 111))
         self.regex_list.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.regex_list.setStyleSheet("QListWidget{background-color: transparent;}")
@@ -275,7 +275,7 @@ class Ui_Dialog(object):
             Qt.ScrollBarPolicy.ScrollBarAlwaysOff
         )
         self.regex_list.setObjectName("regex_list")
-        self.add = QPushButton(parent=self.entry_style)
+        self.add = QPushButton(parent=self.regex_formatter)
         self.add.setGeometry(QRect(0, 160, 131, 23))
         self.add.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.add.setLocale(
@@ -291,7 +291,7 @@ class Ui_Dialog(object):
         )
         self.add.setIcon(icon3)
         self.add.setObjectName("add")
-        self.remove = QPushButton(parent=self.entry_style)
+        self.remove = QPushButton(parent=self.regex_formatter)
         self.remove.setGeometry(QRect(140, 160, 141, 23))
         self.remove.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.remove.setLocale(
@@ -307,7 +307,7 @@ class Ui_Dialog(object):
         )
         self.remove.setIcon(icon4)
         self.remove.setObjectName("remove")
-        self.clone = QPushButton(parent=self.entry_style)
+        self.clone = QPushButton(parent=self.regex_formatter)
         self.clone.setGeometry(QRect(290, 160, 131, 23))
         self.clone.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.clone.setLocale(
@@ -325,7 +325,7 @@ class Ui_Dialog(object):
         )
         self.clone.setIcon(icon5)
         self.clone.setObjectName("clone")
-        self.stackedWidget.addWidget(self.entry_style)
+        self.stackedWidget.addWidget(self.regex_formatter)
         self.next = QToolButton(parent=Dialog)
         self.next.setGeometry(QRect(420, 290, 25, 19))
         self.next.setStyleSheet("border: none; background: transparent;")
@@ -339,7 +339,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         self.tabWidget.setCurrentIndex(0)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -372,8 +372,8 @@ class Ui_Dialog(object):
         self.overwrite_destination_label.setText(
             _translate("Dialog", "Overwrite destination")
         )
-        self.start.setText(_translate("Dialog", "Start"))
-        self.entry_style_label.setText(_translate("Dialog", "Entry style"))
+        self.start.setText(_translate("Dialog", "Add definition(s)"))
+        self.regex_formatter_label.setText(_translate("Dialog", "Regex formatter"))
         self.add.setText(_translate("Dialog", "Add"))
         self.remove.setText(_translate("Dialog", "Remove"))
         self.clone.setText(_translate("Dialog", "Clone"))

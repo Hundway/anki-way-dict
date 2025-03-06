@@ -280,12 +280,13 @@ class EditorDialog(QDialog):
             self.form.regex_list.setSelectionMode(
                 QAbstractItemView.SelectionMode.SingleSelection
             )
-            self.form.regex_list.verticalScrollBar().setDisabled(False)
             item.setSelected(True)
+            self.form.regex_list.verticalScrollBar().setDisabled(False)
             self.config["regex_formatter"][idx] = self.regex_to_dict(widget)
 
         else:
             self.form.regex_list.scrollToItem(item)
+            item.setSelected(False)
             self.form.regex_list.setSelectionMode(
                 QAbstractItemView.SelectionMode.NoSelection
             )

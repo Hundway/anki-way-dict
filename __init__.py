@@ -27,7 +27,7 @@ def editor_action(browser: Browser, menu: QMenu = None) -> None:
 
 def editor_button(buttons: list[str], editor: Editor) -> list[str]:
     new_button = editor.addButton(
-        os.path.dirname(__file__) + "/graphics/icons/editor.png",
+        os.path.dirname(__file__) + "/gui/icons/editor.png",
         "WayDict: Add definition",
         EditorDialog,
         tip="Add definition",

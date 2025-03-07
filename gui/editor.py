@@ -295,6 +295,10 @@ class EditorDialog(QDialog):
 
     def on_item_clone(self) -> None:
         item = self.form.regex_list.currentItem()
+
+        if not item:
+            return
+
         idx = self.form.regex_list.row(item)
         item = self.regex_to_dict(item)
         self.add_regex_item(**item, idx=idx + 1)
@@ -302,6 +306,10 @@ class EditorDialog(QDialog):
 
     def on_item_remove(self) -> None:
         item = self.form.regex_list.currentItem()
+
+        if not item:
+            return
+
         idx = self.form.regex_list.row(item)
         self.form.regex_list.takeItem(idx)
         self.config["regex_formatter"].pop(idx)

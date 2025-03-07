@@ -42,16 +42,6 @@
     <string>Pattern</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="pattern">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>40</y>
-     <width>181</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="replacement_label">
    <property name="geometry">
     <rect>
@@ -188,6 +178,16 @@
    </property>
    <property name="text">
     <string>Flags</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="pattern">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>40</y>
+     <width>181</width>
+     <height>21</height>
+    </rect>
    </property>
   </widget>
  </widget>

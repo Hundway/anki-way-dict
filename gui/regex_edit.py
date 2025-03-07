@@ -10,6 +10,11 @@ from aqt.qt import (
     QPixmap,
     QSize,
     pyqtSignal,
+    QDialog,
+    QListWidget,
+    QListWidgetItem,
+    QDialogButtonBox,
+    Qt,
 )
 
 
@@ -203,3 +208,102 @@ class RegexEditWidget(QWidget):
 
     def sizeHint(self):
         return self.geometry
+
+
+class Ui_add_regex(object):
+    def setupUi(self, AddRegex):
+        AddRegex.setObjectName("AddRegex")
+        AddRegex.resize(231, 221)
+        self.buttonBox = QDialogButtonBox(parent=AddRegex)
+        self.buttonBox.setGeometry(QRect(10, 190, 211, 32))
+        self.buttonBox.setOrientation(Qt.Orientation.Horizontal)
+        self.buttonBox.setStandardButtons(
+            QDialogButtonBox.StandardButton.Cancel | QDialogButtonBox.StandardButton.Ok
+        )
+        self.buttonBox.setObjectName("buttonBox")
+        self.listWidget = QListWidget(parent=AddRegex)
+        self.listWidget.setGeometry(QRect(10, 10, 211, 181))
+        self.listWidget.setObjectName("listWidget")
+        self.listWidget.setStyleSheet("border: none;")
+        item = QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QListWidgetItem()
+        self.listWidget.addItem(item)
+        item = QListWidgetItem()
+        self.listWidget.addItem(item)
+
+        self.retranslateUi(AddRegex)
+        self.buttonBox.accepted.connect(AddRegex.accept)  # type: ignore
+        self.buttonBox.rejected.connect(AddRegex.reject)  # type: ignore
+        QMetaObject.connectSlotsByName(AddRegex)
+
+    def retranslateUi(self, AddRegex):
+        _translate = QCoreApplication.translate
+        AddRegex.setWindowTitle(_translate("AddRegex", "Add regex"))
+        __sortingEnabled = self.listWidget.isSortingEnabled()
+        self.listWidget.setSortingEnabled(False)
+        item = self.listWidget.item(0)
+        item.setText(_translate("AddRegex", "Custom"))
+        item = self.listWidget.item(1)
+        item.setText(_translate("AddRegex", "Redirect queries"))
+        item = self.listWidget.item(2)
+        item.setText(_translate("AddRegex", "Remove element"))
+        item = self.listWidget.item(3)
+        item.setText(_translate("AddRegex", "Remove empty elements"))
+        item = self.listWidget.item(4)
+        item.setText(_translate("AddRegex", "Remove styles"))
+        item = self.listWidget.item(5)
+        item.setText(_translate("AddRegex", "Remove tag"))
+        item = self.listWidget.item(6)
+        item.setText(_translate("AddRegex", "Trim leading spaces"))
+        self.listWidget.setSortingEnabled(__sortingEnabled)
+
+
+class AddRegexDialog(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_add_regex()
+        self.ui.setupUi(self)
+
+    def accept(self):
+        self.current_item = self.ui.listWidget.currentItem()
+        if self.current_item:
+            super().accept()
+
+    def regex_mapping(self, name):
+        regex_map = {
+            "Custom": ["Custom", "", "", "", ""],
+            "Redirect queries": [
+                "Redirect queries",
+                r"\"?query=(.+?)&[^\"]+\"",
+                r"https://www.google.com/search?q=\2",
+                "",
+                "",
+            ],
+            "Remove element": [
+                "Remove element",
+                r"<element[^>]*>.*?</element>",
+                "",
+                "",
+                "",
+            ],
+            "Remove empty elements": [
+                "Remove empty elements",
+                r"<[^/>]*>\s*</[^>]*>",
+                "",
+                "",
+                "",
+            ],
+            "Remove styles": ["Remove styles", r"style=\"[^\"]*\"", "", "", ""],
+            "Remove tag": ["Remove tag", r"<tag[^>]*>", "", "", ""],
+            "Trim leading spaces": ["Trim leading spaces", r"^\s+", "", "", ""],
+        }
+        return regex_map[name]

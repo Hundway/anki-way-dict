@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 from typing import Union
 from ..dictionary import Dictionary
 from . import editor_form as form
-from .regex_edit import RegexEditWidget
+from .regex_edit import RegexEditWidget, AddRegexDialog
 
 
 class EditorDialog(QDialog):
@@ -306,7 +306,14 @@ class EditorDialog(QDialog):
         self.config["regex_formatter"].pop(idx)
 
     def on_item_add(self) -> None:
-        _, widget = self.add_regex_item("New style")
+        dialog = AddRegexDialog()
+        dialog.exec()
+
+        if dialog.result() != QDialog.DialogCode.Accepted:
+            return
+
+        regex_args = dialog.regex_mapping(dialog.current_item.text())
+        _, widget = self.add_regex_item(*regex_args)
         self.config["regex_formatter"].append(self.regex_to_dict(widget))
 
     def regex_to_dict(self, item: Union[RegexEditWidget, QListWidgetItem]) -> dict:

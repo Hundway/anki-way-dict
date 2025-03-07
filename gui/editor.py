@@ -24,7 +24,7 @@ from typing import Union
 
 from ..dictionary import Dictionary
 from .forms.editor import Ui_Dialog
-from .regex_edit import RegexEditWidget, AddRegexDialog
+from .regex import RegexWidget, AddRegexDialog
 
 
 class EditorDialog(QDialog):
@@ -232,10 +232,10 @@ class EditorDialog(QDialog):
         count: str = "",
         flags: str = "",
         idx: int = -1,
-    ) -> tuple[QListWidgetItem, RegexEditWidget]:
+    ) -> tuple[QListWidgetItem, RegexWidget]:
         item = QListWidgetItem()
         item.setSizeHint(QSize(411, 22))
-        widget = RegexEditWidget(name, pattern, replacement, count, flags)
+        widget = RegexWidget(name, pattern, replacement, count, flags)
 
         idx = idx if idx >= 0 else self.form.regex_list.count()
 
@@ -248,7 +248,7 @@ class EditorDialog(QDialog):
 
         return item, widget
 
-    def on_item_up(self, widget: RegexEditWidget) -> None:
+    def on_item_up(self, widget: RegexWidget) -> None:
         item = self.form.regex_list.itemAt(widget.pos())
         idx = self.form.regex_list.row(item)
 
@@ -260,7 +260,7 @@ class EditorDialog(QDialog):
 
         item.setSelected(True)
 
-    def on_item_down(self, widget: RegexEditWidget) -> None:
+    def on_item_down(self, widget: RegexWidget) -> None:
         item = self.form.regex_list.itemAt(widget.pos())
         idx = self.form.regex_list.row(item)
 
@@ -272,7 +272,7 @@ class EditorDialog(QDialog):
 
         item.setSelected(True)
 
-    def on_item_edit(self, widget: RegexEditWidget) -> None:
+    def on_item_edit(self, widget: RegexWidget) -> None:
         item = self.form.regex_list.itemAt(widget.pos())
         item.setSizeHint(widget.sizeHint())
         idx = self.form.regex_list.row(item)
@@ -325,8 +325,8 @@ class EditorDialog(QDialog):
         _, widget = self.add_regex_item(*regex_args)
         self.config["regex_formatter"].append(self.regex_to_dict(widget))
 
-    def regex_to_dict(self, item: Union[RegexEditWidget, QListWidgetItem]) -> dict:
-        if isinstance(item, RegexEditWidget):
+    def regex_to_dict(self, item: Union[RegexWidget, QListWidgetItem]) -> dict:
+        if isinstance(item, RegexWidget):
             widget = item
         elif isinstance(item, QListWidgetItem):
             widget = self.form.regex_list.itemWidget(item)

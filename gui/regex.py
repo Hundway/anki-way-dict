@@ -7,10 +7,10 @@ from aqt.qt import (
     QDialog,
 )
 from .forms.add_regex import Ui_add_regex
-from .forms.regex_item import Ui_regex_edit
+from .forms.regex_item import Ui_regex_item
 
 
-class RegexEditWidget(QWidget):
+class RegexWidget(QWidget):
     up_clicked = pyqtSignal(QWidget)
     down_clicked = pyqtSignal(QWidget)
     edit_clicked = pyqtSignal(QWidget)
@@ -24,7 +24,7 @@ class RegexEditWidget(QWidget):
         flags: str = "",
     ):
         super().__init__()
-        self.ui = Ui_regex_edit()
+        self.ui = Ui_regex_item()
         self.ui.setupUi(self)
         self.set_name(name)
         self.set_pattern(pattern)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>regex_edit</class>
- <widget class="QWidget" name="regex_edit">
+ <class>regex_item</class>
+ <widget class="QWidget" name="regex_item">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -78,7 +78,7 @@
     <string notr="true">border: none; background: transparent;</string>
    </property>
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset resource="../resources.qrc">
      <normaloff>:/icons/up</normaloff>:/icons/up</iconset>
    </property>
    <property name="iconSize">
@@ -101,7 +101,7 @@
     <string notr="true">border: none; background: transparent;</string>
    </property>
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset resource="../resources.qrc">
      <normaloff>:/icons/down</normaloff>:/icons/down</iconset>
    </property>
    <property name="iconSize">
@@ -124,7 +124,7 @@
     <string notr="true">border: none; background: transparent;</string>
    </property>
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset resource="../resources.qrc">
      <normaloff>:/icons/edit</normaloff>:/icons/edit</iconset>
    </property>
    <property name="iconSize">
@@ -192,7 +192,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -28,7 +28,7 @@ from aqt.qt import (
     QFont,
     QPixmap,
 )
-from ..definition_web_view import DefinitionWebView
+from ..definition import DefinitionWebView
 from .. import resources  # noqa
 
 

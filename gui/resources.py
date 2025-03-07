@@ -3,7 +3,7 @@
 # Created by: The Resource Compiler for Qt version 6.8.2
 # WARNING! All changes made in this file will be lost!
 
-from aqt.qt import qRegisterResourceData
+from aqt.qt import qRegisterResourceData, qUnregisterResourceData
 
 qt_resource_data = b"\
 \x00\x00(R\

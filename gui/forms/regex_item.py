@@ -21,9 +21,9 @@ from aqt.qt import (
 from .. import resources  # noqa: F401
 
 
-class Ui_regex_edit(QWidget):
+class Ui_regex_item(QWidget):
     def setupUi(self, regex_edit):
-        regex_edit.setObjectName("regex_edit")
+        regex_edit.setObjectName("regex_item")
         regex_edit.resize(421, 111)
         regex_edit.setStyleSheet("")
         self.name = QLabel(parent=regex_edit)

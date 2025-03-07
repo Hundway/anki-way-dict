@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="icons">
+    <file alias="add">icons/add.png</file>
+    <file alias="browse">icons/browse.png</file>
+    <file alias="clone">icons/clone.png</file>
+    <file alias="down">icons/down.png</file>
+    <file alias="edit">icons/edit.png</file>
+    <file alias="editor">icons/editor.png</file>
+    <file alias="remove">icons/remove.png</file>
+    <file alias="search">icons/search.png</file>
+    <file alias="start">icons/start.png</file>
+    <file alias="up">icons/up.png</file>
+  </qresource>
+</RCC>

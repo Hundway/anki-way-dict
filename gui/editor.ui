@@ -99,8 +99,8 @@
     <string>Browse</string>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../graphics/icons/browse.png</normaloff>../graphics/icons/browse.png</iconset>
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/browse</normaloff>:/icons/browse</iconset>
    </property>
   </widget>
   <widget class="QTabWidget" name="tabWidget">
@@ -205,8 +205,8 @@
     <string>Search</string>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../graphics/icons/search.png</normaloff>../graphics/icons/search.png</iconset>
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/search</normaloff>:/icons/search</iconset>
    </property>
   </widget>
   <widget class="QLabel" name="text_format_label">
@@ -467,8 +467,8 @@
       <string>Add definition(s)</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../graphics/icons/start.png</normaloff>../graphics/icons/start.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/icons/start</normaloff>:/icons/start</iconset>
      </property>
     </widget>
    </widget>
@@ -559,8 +559,8 @@
       <string>Add</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../graphics/icons/add.png</normaloff>../graphics/icons/add.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/icons/add</normaloff>:/icons/add</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="remove">
@@ -582,8 +582,8 @@
       <string>Remove</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../graphics/icons/remove.png</normaloff>../graphics/icons/remove.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="clone">
@@ -605,8 +605,8 @@
       <string>Clone</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>../graphics/icons/clone.png</normaloff>../graphics/icons/clone.png</iconset>
+      <iconset resource="resources.qrc">
+       <normaloff>:/icons/clone</normaloff>:/icons/clone</iconset>
      </property>
     </widget>
    </widget>
@@ -652,6 +652,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

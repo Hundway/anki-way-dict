@@ -78,8 +78,8 @@
     <string notr="true">border: none; background: transparent;</string>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../graphics/icons/up.png</normaloff>../graphics/icons/up.png</iconset>
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/up</normaloff>:/icons/up</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -101,8 +101,8 @@
     <string notr="true">border: none; background: transparent;</string>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../graphics/icons/down.png</normaloff>../graphics/icons/down.png</iconset>
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/down</normaloff>:/icons/down</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -124,8 +124,8 @@
     <string notr="true">border: none; background: transparent;</string>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../graphics/icons/edit.png</normaloff>../graphics/icons/edit.png</iconset>
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/edit</normaloff>:/icons/edit</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -191,6 +191,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

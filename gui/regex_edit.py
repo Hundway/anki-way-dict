@@ -6,8 +6,8 @@ from aqt.qt import (
     pyqtSignal,
     QDialog,
 )
-from .add_regex_form import Ui_add_regex
-from .regex_editor_form import Ui_regex_edit
+from .forms.add_regex import Ui_add_regex
+from .forms.regex_item import Ui_regex_edit
 
 
 class RegexEditWidget(QWidget):

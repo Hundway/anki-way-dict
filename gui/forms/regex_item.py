@@ -16,11 +16,12 @@ from aqt.qt import (
     QPixmap,
     QCoreApplication,
     QMetaObject,
+    QWidget,
 )
-from . import resources  # noqa: F401
+from .. import resources  # noqa: F401
 
 
-class Ui_regex_edit(object):
+class Ui_regex_edit(QWidget):
     def setupUi(self, regex_edit):
         regex_edit.setObjectName("regex_edit")
         regex_edit.resize(421, 111)

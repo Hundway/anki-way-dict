@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 from typing import Union
 
 from ..dictionary import Dictionary
-from . import editor_form as form
+from .forms.editor import Ui_Dialog
 from .regex_edit import RegexEditWidget, AddRegexDialog
 
 
@@ -45,7 +45,7 @@ class EditorDialog(QDialog):
             self.nids = nids
 
         QDialog.__init__(self, self.parent_window)
-        self.form = form.Ui_Dialog()
+        self.form = Ui_Dialog()
         self.form.setupUi(self)
         self.show()
         self.config = mw.addonManager.getConfig(__name__)

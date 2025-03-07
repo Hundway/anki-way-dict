@@ -28,8 +28,8 @@ from aqt.qt import (
     QFont,
     QPixmap,
 )
-from .definition_web_view import DefinitionWebView
-from . import resources  # noqa
+from ..definition_web_view import DefinitionWebView
+from .. import resources  # noqa
 
 
 class Ui_Dialog(object):

@@ -21,6 +21,7 @@ from aqt.qt import (
 from aqt.utils import tooltip
 from bs4 import BeautifulSoup
 from typing import Union
+
 from ..dictionary import Dictionary
 from . import editor_form as form
 from .regex_edit import RegexEditWidget, AddRegexDialog
